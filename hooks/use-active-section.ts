@@ -46,8 +46,8 @@ export function useActiveSection() {
       let currentSection = "";
       
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
         
         if (scrollPosition >= sectionTop && 
             scrollPosition <= sectionTop + sectionHeight) {
