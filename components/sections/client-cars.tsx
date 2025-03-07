@@ -1,12 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { Calendar, Users, Car, Gauge, Settings, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
+import Image from "next/image";
 
+// Kiemelve a statikus adatok
 export const cars = [
   {
     id: 1,
@@ -128,15 +131,16 @@ export const cars = [
   }
 ];
 
-interface CarsProps {
-  selectedCar: string;
-  onSelectCar: (carName: string) => void;
-}
-
-export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
+export function ClientCars() {
+  const [selectedCar, setSelectedCar] = useState("");
+  
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 640px)': { slidesToScroll: 2 },
+      '(min-width: 1024px)': { slidesToScroll: 3 }
+    }
   });
 
   const scrollPrev = useCallback(() => {
@@ -161,6 +165,7 @@ export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
             variant="secondary"
             className="bg-gray-900 hover:bg-gray-800 text-white h-10 w-10 rounded-full shadow-lg"
             onClick={scrollPrev}
+            aria-label="Előző autó"
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
@@ -169,6 +174,7 @@ export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
             variant="secondary"
             className="bg-gray-900 hover:bg-gray-800 text-white h-10 w-10 rounded-full shadow-lg"
             onClick={scrollNext}
+            aria-label="Következő autó"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
@@ -184,10 +190,14 @@ export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
                   }`}
                 >
                   <div className="relative w-full h-48">
-                    <img 
+                    <Image 
                       src={car.image} 
                       alt={car.name} 
-                      className="absolute inset-0 w-full h-full object-cover object-center"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-center"
+                      priority={car.id <= 2}
+                      quality={85}
                     />
                   </div>
                   <CardContent className="p-4 flex flex-col flex-1">
@@ -200,19 +210,19 @@ export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
                     
                     <div className="grid grid-cols-2 gap-3 mb-3">
                       <div className="flex items-center gap-1.5 text-gray-600 text-sm">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-4 w-4" aria-hidden="true" />
                         <span>{car.year}</span>
                       </div>
                       <div className="flex items-center gap-1.5 text-gray-600 text-sm">
-                        <Users className="h-4 w-4" />
+                        <Users className="h-4 w-4" aria-hidden="true" />
                         <span>{car.seats}</span>
                       </div>
                       <div className="flex items-center gap-1.5 text-gray-600 text-sm">
-                        <Gauge className="h-4 w-4" />
+                        <Gauge className="h-4 w-4" aria-hidden="true" />
                         <span>{car.engine}</span>
                       </div>
                       <div className="flex items-center gap-1.5 text-gray-600 text-sm">
-                        <Settings className="h-4 w-4" />
+                        <Settings className="h-4 w-4" aria-hidden="true" />
                         <span>{car.transmission}</span>
                       </div>
                     </div>
@@ -224,7 +234,7 @@ export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
                       <ul className="grid grid-cols-2 gap-1.5 text-xs text-gray-600">
                         {car.features.map((feature, index) => (
                           <li key={index} className="flex items-center gap-1.5">
-                            <span className="w-1 h-1 bg-blue-600 rounded-full" />
+                            <span className="w-1 h-1 bg-blue-600 rounded-full" aria-hidden="true" />
                             {feature}
                           </li>
                         ))}
@@ -246,7 +256,7 @@ export function CarsSection({ selectedCar, onSelectCar }: CarsProps) {
                     <Button 
                       className="w-full mt-4"
                       onClick={() => {
-                        onSelectCar(car.name);
+                        setSelectedCar(car.name);
                         document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
                       }}
                     >

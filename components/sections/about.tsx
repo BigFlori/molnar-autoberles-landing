@@ -1,6 +1,7 @@
 import { Clock, Shield, MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+// Server komponens, statikus tartalommal
 const features = [
   {
     icon: Clock,
@@ -21,14 +22,23 @@ const features = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section 
+      id="about" 
+      className="py-20 bg-white"
+      aria-labelledby="about-heading"
+    >
       <div className="container px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Miért válasszon minket?</h2>
+        <h2 
+          id="about-heading"
+          className="text-3xl font-bold text-center text-gray-900 mb-12"
+        >
+          Miért válasszon minket?
+        </h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {features.map((feature) => (
-            <Card key={feature.title}>
+            <Card key={feature.title} className="transition-transform hover:scale-105">
               <CardHeader>
-                <feature.icon className="h-10 w-10 text-blue-600 mb-4" />
+                <feature.icon className="h-10 w-10 text-blue-600 mb-4" aria-hidden="true" />
                 <CardTitle>{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>

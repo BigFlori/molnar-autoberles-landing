@@ -3,69 +3,79 @@
 import { useState, useEffect } from "react";
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
+    // Definiálja az elemeket, amelyeket figyelni szeretnénk
+    const sections = ["hero", "about", "cars", "booking", "reviews", "contact"];
     
     const observer = new IntersectionObserver(
       (entries) => {
-        let maxVisibility = 0;
-        let mostVisibleSection = "";
-
         entries.forEach((entry) => {
-          const boundingRect = entry.boundingClientRect;
-          const windowHeight = window.innerHeight;
-          
-          // Calculate how much of the section is visible in the viewport
-          const visibleHeight = Math.min(boundingRect.bottom, windowHeight) - 
-                              Math.max(boundingRect.top, 0);
-          const visibility = visibleHeight / boundingRect.height;
-
-          if (visibility > maxVisibility) {
-            maxVisibility = visibility;
-            mostVisibleSection = entry.target.id;
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
           }
         });
-
-        if (mostVisibleSection) {
-          setActiveSection(mostVisibleSection);
-        }
       },
       {
-        threshold: Array.from({ length: 11 }, (_, i) => i / 10), // 0, 0.1, 0.2, ..., 1.0
-        rootMargin: "-10% 0px -10% 0px"
+        rootMargin: "-10% 0px -90% 0px", // Középre súlyozva
+        threshold: 0.1, // 10% látható terület
       }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    // Regisztrálja az observer-t minden szekcióra
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) {
+        observer.observe(element);
+      }
+    });
 
-    // Kezdeti aktív szekció beállítása
-    const setInitialActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      let currentSection = "";
-      
-      sections.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop;
-        const sectionHeight = (section as HTMLElement).offsetHeight;
-        
-        if (scrollPosition >= sectionTop && 
-            scrollPosition <= sectionTop + sectionHeight) {
-          currentSection = section.id;
-        }
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
+    // Hash változásra figyelés
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setActiveSection(hash.substring(1));
       }
     };
 
-    setInitialActiveSection();
-    window.addEventListener("scroll", setInitialActiveSection);
+    window.addEventListener("hashchange", handleHashChange);
+    
+    // Kezdeti érték beállítása scroll pozíció alapján
+    const checkScroll = () => {
+      let current = "";
+      
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // A teljes képernyő közepén és felette van a szekció
+          if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+            current = section;
+          }
+        }
+      });
+      
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+    
+    checkScroll();
+    window.addEventListener("scroll", checkScroll);
 
+    // Cleanup
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
-      window.removeEventListener("scroll", setInitialActiveSection);
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("scroll", checkScroll);
     };
   }, []);
 
