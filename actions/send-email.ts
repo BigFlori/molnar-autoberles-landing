@@ -2,6 +2,7 @@
 
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
+import { formatPhoneNumber } from '@/utils/utils';
 
 // Validációs séma
 const bookingSchema = z.object({
@@ -30,13 +31,20 @@ export async function sendEmail(formData: BookingFormData) {
     
     const { name, email, phone, car, startDate, endDate, message } = result.data;
     
+    // Céges adatok környezeti változókból
+    const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
+    const companyAddress = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "9730 Kőszeg, Fő tér 1.";
+    const companyPhone = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+    const formattedCompanyPhone = formatPhoneNumber(companyPhone);
+    const companyEmail = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
+    
     // Email szöveg összeállítása
     const emailText = `
       Új foglalási kérelem érkezett:
       
       Név: ${name}
       Email: ${email}
-      Telefon: ${phone}
+      Telefon: ${formatPhoneNumber(phone)}
       Választott autó: ${car}
       Bérlés kezdete: ${startDate}
       Bérlés vége: ${endDate}
@@ -57,23 +65,12 @@ export async function sendEmail(formData: BookingFormData) {
         rejectUnauthorized: true
       }
     });
-
-    // Részletes naplózás debuggoláshoz
-    // console.log("Email küldési kísérlet a következő konfigurációval:", {
-    //   host: process.env.SMTP_HOST,
-    //   port: process.env.SMTP_PORT,
-    //   secure: process.env.SMTP_SECURE === 'true',
-    //   user: process.env.SMTP_USER ? 'beállítva' : 'nincs beállítva',
-    //   pass: process.env.SMTP_PASSWORD ? 'beállítva' : 'nincs beállítva',
-    //   from: process.env.EMAIL_FROM,
-    //   to: process.env.EMAIL_TO
-    // });
     
     // Első email: értesítés a cégnek
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
-      subject: 'Új foglalási kérelem - Molnár Autóbérlés',
+      subject: `Új foglalási kérelem - ${companyName}`,
       text: emailText,
       replyTo: email,
     });
@@ -82,7 +79,7 @@ export async function sendEmail(formData: BookingFormData) {
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: 'Foglalási kérelme megérkezett - Molnár Autóbérlés',
+      subject: `Foglalási kérelme megérkezett - ${companyName}`,
       text: `
         Tisztelt ${name}!
         
@@ -94,14 +91,12 @@ export async function sendEmail(formData: BookingFormData) {
         - Bérlés vége: ${endDate}
         
         Üdvözlettel,
-        Molnár Autóbérlés csapata
-        Kőszeg, Fő tér 1.
-        +36 30 123 4567
-        info@molnarautoberles.hu
+        ${companyName} csapata
+        ${companyAddress}
+        ${formattedCompanyPhone}
+        ${companyEmail}
       `,
     });
-    
-    // console.log("Email sikeresen elküldve!");
     
     // Sikeres válasz
     return { success: true };

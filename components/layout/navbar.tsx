@@ -6,6 +6,7 @@ import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import Link from "next/link";
+import { formatPhoneNumber } from "@/utils/utils";
 
 const navItems = [
   { href: "#about", label: "Rólunk" },
@@ -18,6 +19,8 @@ export function Navbar() {
   const activeSection = useActiveSection();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+  const formattedPhone = formatPhoneNumber(phoneNumber);
 
   // Scroll figyelése
   useEffect(() => {
@@ -86,17 +89,17 @@ export function Navbar() {
 
         {/* Desktop Phone */}
         <Link 
-          href="tel:+36301234567" 
+          href={`tel:${phoneNumber}`}
           className="hidden md:flex items-center gap-2 text-blue-600 hover:text-blue-700"
         >
           <Phone className="h-5 w-5" aria-hidden="true" />
-          <span>+36 30 123 4567</span>
+          <span>{formattedPhone}</span>
         </Link>
 
         {/* Mobile Navigation */}
         <div className="flex items-center gap-6 ml-auto md:hidden">
           <Link 
-            href="tel:+36301234567" 
+            href={`tel:${phoneNumber}`}
             className="text-blue-600 hover:text-blue-700"
             aria-label="Telefon"
           >
@@ -134,12 +137,12 @@ export function Navbar() {
                     </Link>
                   ))}
                   <Link 
-                    href="tel:+36301234567" 
+                    href={`tel:${phoneNumber}`}
                     className="flex items-center gap-2 text-blue-600 hover:text-blue-700 py-2 mt-4"
                     onClick={() => setIsOpen(false)}
                   >
                     <Phone className="h-5 w-5" aria-hidden="true" />
-                    <span>+36 30 123 4567</span>
+                    <span>{formattedPhone}</span>
                   </Link>
                 </div>
               </nav>

@@ -5,24 +5,24 @@ import { Card, CardContent } from "@/components/ui/card";
 const reviews = [
   {
     id: 1,
-    name: "Kovács Péter",
+    name: "Krepsz Hanna",
     rating: 5,
-    text: "Kiváló szolgáltatás, rugalmas ügyintézés. Az autó tiszta és megbízható volt.",
-    date: "2024-02-15",
+    text: "Én nagyon meg voltam velük elégedve,nagyon kedvesek. Megbízható és megfizethető. Mindenkinek ajánlom.",
+    date: "2025-01-06",
   },
   {
     id: 2,
-    name: "Nagy Andrea",
+    name: "Atiska_446",
     rating: 5,
-    text: "Már többször béreltem autót tőlük, mindig elégedett voltam. Korrekt árak és professzionális hozzáállás.",
-    date: "2024-01-20",
+    text: "Megbízható autó meg fizethető áron. Mindenkinek merem ajánlani 🤝",
+    date: "2025-01-12",
   },
   {
     id: 3,
-    name: "Szabó János",
+    name: "Proksch Edina",
     rating: 5,
-    text: "A legjobb autóbérlési tapasztalatom eddig. Gyors és egyszerű folyamat, kedves kiszolgálás.",
-    date: "2024-03-05",
+    text: "Megbízható-pontos -korrekt‼️",
+    date: "2024-12-28",
   },
 ];
 
@@ -42,7 +42,7 @@ export function ReviewsSection() {
         </h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {reviews.map((review) => (
-            <Card key={review.id} className="hover:shadow-lg transition-shadow">
+            <Card key={review.id}>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-1 mb-4" aria-label={`${review.rating} csillagos értékelés`}>
                   {[...Array(review.rating)].map((_, i) => (

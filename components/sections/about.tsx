@@ -36,7 +36,7 @@ export function AboutSection() {
         </h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {features.map((feature) => (
-            <Card key={feature.title} className="transition-transform hover:scale-105">
+            <Card key={feature.title}>
               <CardHeader>
                 <feature.icon className="h-10 w-10 text-blue-600 mb-4" aria-hidden="true" />
                 <CardTitle>{feature.title}</CardTitle>

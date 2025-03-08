@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/sections/hero";
 import { AboutSection } from "@/components/sections/about";
 import { ReviewsSection } from "@/components/sections/reviews";
 import { ContactSection } from "@/components/sections/contact";
+import { CarProvider } from "@/provider/car-provider";
 import { Metadata } from "next";
 
 // További SEO beállítások
@@ -24,12 +25,15 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        <Suspense fallback={<CarsSectionSkeleton />}>
-          <ClientCars />
-        </Suspense>
-        <Suspense fallback={<BookingSectionSkeleton />}>
-          <ClientBooking />
-        </Suspense>
+        {/* Wrap the car-related sections with CarProvider */}
+        <CarProvider>
+          <Suspense fallback={<CarsSectionSkeleton />}>
+            <ClientCars />
+          </Suspense>
+          <Suspense fallback={<BookingSectionSkeleton />}>
+            <ClientBooking />
+          </Suspense>
+        </CarProvider>
         <ReviewsSection />
         <ContactSection />
       </main>
@@ -79,7 +83,7 @@ const ClientBooking = dynamic(
   () => import("@/components/sections/client-booking").then((mod) => mod.ClientBooking),
 );
 
-  // Strukturált adat a keresőmotoroknak
+// Strukturált adat a keresőmotoroknak
 function SchemaMarkup() {
   const schemaData = {
     "@context": "https://schema.org",

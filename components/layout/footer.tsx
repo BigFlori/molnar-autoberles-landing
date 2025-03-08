@@ -1,9 +1,15 @@
 import { Car, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import { ClientFooterLinks } from "./client-footer-links";
+import { formatPhoneNumber } from "@/utils/utils";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+  const formattedPhone = formatPhoneNumber(phoneNumber);
+  const email = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
+  const companyAddress = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "9730 Kőszeg, Fő tér 1.";
+  const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
   
   return (
     <footer className="border-t bg-white pt-12 pb-6">
@@ -13,7 +19,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Car className="h-6 w-6 text-blue-600" aria-hidden="true" />
-              <span className="text-lg font-semibold">Molnár Autóbérlés</span>
+              <span className="text-lg font-semibold">{companyName}</span>
             </div>
             <p className="text-gray-600 mb-4">
               Minőségi autóbérlési szolgáltatások Kőszegen és környékén már 2010 óta. 
@@ -21,18 +27,18 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 mb-2">
               <MapPin className="h-4 w-4 text-blue-600" aria-hidden="true" />
-              <span className="text-sm text-gray-600">9730 Kőszeg, Fő tér 1.</span>
+              <span className="text-sm text-gray-600">{companyAddress}</span>
             </div>
             <div className="flex items-center gap-2 mb-2">
               <Phone className="h-4 w-4 text-blue-600" aria-hidden="true" />
-              <Link href="tel:+36301234567" className="text-sm text-gray-600 hover:text-blue-600">
-                +36 30 123 4567
+              <Link href={`tel:${phoneNumber}`} className="text-sm text-gray-600 hover:text-blue-600">
+                {formattedPhone}
               </Link>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-blue-600" aria-hidden="true" />
-              <Link href="mailto:info@molnarautoberles.hu" className="text-sm text-gray-600 hover:text-blue-600">
-                info@molnarautoberles.hu
+              <Link href={`mailto:${email}`} className="text-sm text-gray-600 hover:text-blue-600">
+                {email}
               </Link>
             </div>
           </div>
@@ -60,7 +66,7 @@ export function Footer() {
         <div className="border-t pt-6 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-600">
-              © {currentYear} Molnár Autóbérlés. Minden jog fenntartva.
+              © {currentYear} {companyName}. Minden jog fenntartva.
             </p>
             <div className="flex items-center space-x-4">
               <Link href="/adatkezeles" className="text-sm text-gray-600 hover:text-blue-600">

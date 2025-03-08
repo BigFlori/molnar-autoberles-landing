@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Calendar, Users, Car, Gauge, Settings, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback } from 'react';
 import Image from "next/image";
+import { useCarSelection } from "@/provider/car-provider";
 
 // Kiemelve a statikus adatok
 export const cars = [
@@ -132,7 +132,8 @@ export const cars = [
 ];
 
 export function ClientCars() {
-  const [selectedCar, setSelectedCar] = useState("");
+  // A lokális state helyett a megosztott context-et használjuk
+  const { selectedCar, setSelectedCar } = useCarSelection();
   
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',

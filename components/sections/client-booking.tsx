@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { DatePicker } from "@/components/ui/date-picker";
 import { format, addDays } from "date-fns";
 import { sendEmail } from "@/actions/send-email";
+import { useCarSelection } from "@/provider/car-provider";
 
 // Form validációs séma
 const formSchema = z.object({
@@ -33,7 +34,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export function ClientBooking() {
-  const [selectedCar, setSelectedCar] = useState("");
+  // A Context-ből származó értékek
+  const { selectedCar, setSelectedCar } = useCarSelection();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<FormValues>({
@@ -42,15 +44,28 @@ export function ClientBooking() {
       name: "",
       email: "",
       phone: "",
-      car: selectedCar,
+      car: "",
       message: "",
     },
   });
 
-  // Frissítjük a formot, ha kívülről változik a selected car
-  if (selectedCar !== form.getValues().car) {
-    form.setValue("car", selectedCar);
-  }
+  // Figyeljük a context-ben lévő selectedCar értékét
+  useEffect(() => {
+    if (selectedCar && selectedCar !== form.getValues().car) {
+      form.setValue("car", selectedCar);
+    }
+  }, [selectedCar, form]);
+
+  // Figyeljük a form car értékének változását
+  useEffect(() => {
+    const subscription = form.watch((value, { name }) => {
+      if (name === 'car' && value.car !== selectedCar) {
+        setSelectedCar(value.car as string);
+      }
+    });
+    
+    return () => subscription.unsubscribe();
+  }, [form, setSelectedCar, selectedCar]);
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
@@ -88,7 +103,7 @@ export function ClientBooking() {
       if (result.success) {
         toast.success("Foglalási kérelmét sikeresen elküldtük!");
         form.reset();
-        setSelectedCar("");
+        setSelectedCar(""); // Töröljük a kiválasztott autót is
       } else {
         console.error("Hiba az email küldésekor:", result.error, result.details);
         toast.error(`Hiba történt a küldés során: ${result.error}`);
@@ -102,7 +117,7 @@ export function ClientBooking() {
   };
 
   return (
-    <section id="booking" className="py-20">
+    <section id="booking" className="py-10">
       <div className="container px-4">
         <div className="max-w-2xl mx-auto">
           <Card>
