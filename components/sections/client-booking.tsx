@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { DatePicker } from "@/components/ui/date-picker";
 import { format, addDays } from "date-fns";
+import { sendEmail } from "@/actions/send-email";
 
 // Form validációs séma
 const formSchema = z.object({
@@ -57,6 +58,8 @@ export function ClientBooking() {
     try {
       // Mai dátum ellenőrzése
       const today = new Date();
+      today.setHours(0, 0, 0, 0); // Állítsd a mai dátumot éjfélre az összehasonlításhoz
+      
       const startDate = data.startDate;
       const endDate = data.endDate;
       
@@ -79,22 +82,19 @@ export function ClientBooking() {
         endDate: format(endDate, 'yyyy-MM-dd'),
       };
 
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        body: JSON.stringify(formattedData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      // Server Action meghívása
+      const result = await sendEmail(formattedData);
 
-      if (response.ok) {
+      if (result.success) {
         toast.success("Foglalási kérelmét sikeresen elküldtük!");
         form.reset();
         setSelectedCar("");
       } else {
-        throw new Error();
+        console.error("Hiba az email küldésekor:", result.error, result.details);
+        toast.error(`Hiba történt a küldés során: ${result.error}`);
       }
     } catch (error) {
+      console.error("Feldolgozási hiba:", error);
       toast.error("Hiba történt a küldés során. Kérjük próbálja újra később.");
     } finally {
       setIsSubmitting(false);
