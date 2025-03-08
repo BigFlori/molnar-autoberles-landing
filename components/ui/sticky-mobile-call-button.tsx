@@ -22,28 +22,33 @@ export function StickyMobileCallButton() {
     // Ellenőrizzük, hogy látható-e a footer
     const checkFooterVisibility = () => {
       const footer = document.querySelector("footer");
-      if (!footer) return true;
+      if (!footer) return false;
 
       const footerRect = footer.getBoundingClientRect();
       const footerTop = footerRect.top;
       const windowHeight = window.innerHeight;
       
-      // Ha a footer teteje közel van a képernyő aljához, elrejtjük a gombot
-      return footerTop > windowHeight - 100;
+      // Csak akkor rejtjük el a gombot, ha a footer már látható
+      // (azaz a footer felső része már belépett a képernyőbe)
+      return footerTop < windowHeight;
     };
 
     // Görgetés kezelése
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const isFooterVisible = checkFooterVisibility();
       
-      // Két feltétel alapján jelenítjük meg vagy rejtjük el:
-      // 1. Ha a footer látható, akkor elrejtjük
-      // 2. Ha felfelé görgetünk, újra megmutatjuk
-      const shouldBeVisible = 
-        checkFooterVisibility() &&
-        (currentScrollY < lastScrollY || currentScrollY < 100);
+      // Ha a footer látható, elrejtjük a gombot
+      if (isFooterVisible) {
+        setIsVisible(false);
+      } else {
+        // Egyébként megjelenítjük, kivéve ha lefelé görgetünk és nem vagyunk az oldal tetején
+        const isScrollingDown = currentScrollY > lastScrollY;
+        const isNotAtTop = currentScrollY > 100;
         
-      setIsVisible(shouldBeVisible);
+        setIsVisible(!(isScrollingDown && isNotAtTop));
+      }
+      
       setLastScrollY(currentScrollY);
     };
 
