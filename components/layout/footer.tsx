@@ -1,14 +1,14 @@
 import { Car, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import { ClientFooterLinks } from "./client-footer-links";
-import { formatPhoneNumber } from "@/utils/utils";
+import { formatPhoneNumber, getFullAddress } from "@/utils/utils";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
   const formattedPhone = formatPhoneNumber(phoneNumber);
   const email = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
-  const companyAddress = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "9730 Kőszeg, Fő tér 1.";
+  const companyAddress = getFullAddress();
   const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
   
   return (
@@ -22,7 +22,7 @@ export function Footer() {
               <span className="text-lg font-semibold">{companyName}</span>
             </div>
             <p className="text-gray-600 mb-4">
-              Minőségi autóbérlési szolgáltatások Kőszegen és környékén már 2010 óta. 
+              Minőségi autóbérlési szolgáltatások Kőszegen és környékén már 2024 óta. 
               Családi vállalkozásként az Ön elégedettsége a legfontosabb számunkra.
             </p>
             <div className="flex items-center gap-2 mb-2">
@@ -54,11 +54,11 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Nyitvatartás</h3>
             <dl className="grid grid-cols-2 gap-y-2">
               <dt className="text-gray-600">Hétfő - Péntek:</dt>
-              <dd className="text-gray-800">8:00 - 17:00</dd>
+              <dd className="text-gray-800">8:00 - 22:00</dd>
               <dt className="text-gray-600">Szombat:</dt>
-              <dd className="text-gray-800">9:00 - 13:00</dd>
+              <dd className="text-gray-800">9:00 - 20:00</dd>
               <dt className="text-gray-600">Vasárnap:</dt>
-              <dd className="text-gray-800">Zárva</dd>
+              <dd className="text-gray-800">8:00 - 22:00</dd>
             </dl>
           </div>
         </div>

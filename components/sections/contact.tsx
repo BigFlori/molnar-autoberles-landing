@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Mail, Phone, MapPin, Clock } from "lucide-react";
 import Link from "next/link";
 import { ClientContactMap } from "./client-contact-map";
-import { formatPhoneNumber } from "@/utils/utils";
+import { formatPhoneNumber, getFullAddress } from "@/utils/utils";
 
 export function ContactSection() {
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
@@ -10,7 +10,7 @@ export function ContactSection() {
   const email = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
   const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com";
   const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
-  const companyAddress = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "9730 Kőszeg, Fő tér 1.";
+  const companyAddress = getFullAddress();
   const googleMapsUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL || "https://maps.google.com";
   
   return (
@@ -50,17 +50,17 @@ export function ContactSection() {
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Nyitvatartás</h3>
                   <dl className="space-y-1">
-                    <div className="flex justify-between">
+                    <div className="flex space-x-5 justify-between">
                       <dt className="text-gray-600">Hétfő - Péntek:</dt>
-                      <dd className="text-gray-800 font-medium">8:00 - 17:00</dd>
+                      <dd className="text-gray-800 font-medium">8:00 - 22:00</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Szombat:</dt>
-                      <dd className="text-gray-800 font-medium">9:00 - 13:00</dd>
+                      <dd className="text-gray-800 font-medium">9:00 - 20:00</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Vasárnap:</dt>
-                      <dd className="text-gray-800 font-medium">Zárva</dd>
+                      <dd className="text-gray-800 font-medium">8:00 - 22:00</dd>
                     </div>
                   </dl>
                 </div>
