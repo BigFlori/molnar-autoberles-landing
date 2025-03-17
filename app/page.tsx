@@ -88,37 +88,41 @@ function SchemaMarkup() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Molnár Autóbérlés",
-    "image": "https://molnarautoberles.hu/logo.jpg",
-    "url": "https://molnarautoberles.hu",
-    "telephone": "+36301234567",
+    "name": process.env.NEXT_PUBLIC_COMPANY_NAME,
+    "image": `${process.env.NEXT_PUBLIC_SITE_URL}/logo.jpg`,
+    "url": process.env.NEXT_PUBLIC_SITE_URL,
+    "telephone": process.env.NEXT_PUBLIC_PHONE_NUMBER,
+    "email": process.env.NEXT_PUBLIC_INFO_MAIL,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Fő tér 1.",
-      "addressLocality": "Kőszeg",
-      "postalCode": "9730",
-      "addressCountry": "HU"
+      "streetAddress": process.env.NEXT_PUBLIC_COMPANY_STREET_ADDRESS,
+      "addressLocality": process.env.NEXT_PUBLIC_COMPANY_CITY,
+      "postalCode": process.env.NEXT_PUBLIC_COMPANY_POSTAL_CODE,
+      "addressCountry": process.env.NEXT_PUBLIC_COMPANY_COUNTRY
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 47.389444,
-      "longitude": 16.541667
+      "latitude": 47.38816005197496,
+      "longitude": 16.5403936950067
     },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"],
         "opens": "08:00",
-        "closes": "17:00"
+        "closes": "22:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
         "opens": "09:00",
-        "closes": "13:00"
+        "closes": "20:00"
       }
     ],
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "sameAs": [
+      process.env.NEXT_PUBLIC_FACEBOOK_URL
+    ]
   };
 
   return (
