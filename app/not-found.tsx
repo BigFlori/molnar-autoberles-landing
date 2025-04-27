@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 - Az oldal nem található | Molnár Autóbérlés",
+  title: "404 - Az oldal nem található",
   description: "Az általad keresett oldal nem található. Térj vissza a főoldalra és folytasd a böngészést.",
 };
 
