@@ -6,9 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { cars } from "./client-cars";
 import { toast } from "sonner";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -16,6 +15,7 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { format, addDays } from "date-fns";
 import { sendEmail } from "@/actions/send-email";
 import { useCarSelection } from "@/provider/car-provider";
+import { cars } from "./client-cars";
 
 // Form validációs séma
 const formSchema = z.object({

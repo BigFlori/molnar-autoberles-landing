@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Opel Astra H Kombi",
+    "price": "7.000",
+    "year": "2010",
+    "engine": "1.7 Dízel, 110 LE",
+    "seats": "5 személyes",
+    "transmission": "Manuális",
+    "image": "opel.webp",
+    "features": ["alacsony fogyasztás", "klíma", "parkradar", "évszaknak megfelelő gumik", "tempomat", "ülésfűtés"],
+    "pricing": {
+      "daily": {
+        "price": "8.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "7.000",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Suzuki Swift GLX",
+    "price": "6.000",
+    "year": "2007",
+    "engine": "1.3 benzin, 92 LE",
+    "seats": "5 személyes",
+    "transmission": "Manuális",
+    "image": "suzuki_swift.jpg",
+    "features": ["alacsony fogyasztás", "centrálzár", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "7.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.000",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Ford Focus Kombi",
+    "price": "6.000",
+    "year": "2007",
+    "engine": "1.6 diesel, 89 LE",
+    "seats": "5 személyes",
+    "transmission": "Manuális",
+    "image": "ford-focus.webp",
+    "features": ["alacsony fogyasztás", "klíma", "parkradar", "centrálzár", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "7.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.000",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Suzuki Swift",
+    "price": "6.000",
+    "year": "2007",
+    "engine": "1.3 benzin, 92 LE",
+    "seats": "5 személyes",
+    "transmission": "Manuális",
+    "image": "suzuki_swift.jpg",
+    "features": ["alacsony fogyasztás", "klíma", "parkradar", "centrálzár", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "7.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.000",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  }
+]
