@@ -18,16 +18,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-  openGraph: {
-    images: [
-      {
-        url: `${siteUrl}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Molnár Autóbérlés Kőszeg",
-      },
-    ],
-  },
 };
 
 // Főoldal szerver komponens
@@ -102,7 +92,7 @@ function SchemaMarkup() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": process.env.NEXT_PUBLIC_COMPANY_NAME,
-    "image": `${siteUrl}/og-image.jpg`,
+    "image": `${siteUrl}/opengraph-image.png`, // Frissítve az új OG kép URL-re
     "url": siteUrl,
     "telephone": process.env.NEXT_PUBLIC_PHONE_NUMBER,
     "email": process.env.NEXT_PUBLIC_INFO_MAIL,
