@@ -1,114 +1,18 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { Calendar, Users, Car, Gauge, Settings, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, } from "react";
+import { Calendar, Users, Gauge, Settings, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { useCarSelection } from "@/provider/car-provider";
+import { CarType } from "@/types/car";
+import carsData from "@/data/cars.json";
 
-// Kiemelve a statikus adatok
-export const cars = [
-  {
-    id: 1,
-    name: "Opel Astra H Kombi",
-    price: "7.000",
-    year: "2010",
-    engine: "1.7 Dízel, 110 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80",
-    features: ["alacsony fogyasztás", "klíma", "parkradar", "évszaknak megfelelő gumik", "tempomat", "ülésfűtés"],
-    pricing: {
-      daily: {
-        price: "8.000",
-        limit: "300km",
-      },
-      // TODO: 3. naptól
-      threeDays: {
-        price: "7.000",
-        limit: "200km",
-      },
-      sevenDays: "egyedi ár",
-      domesticDeposit: "20.000",
-      abroadDeposit: "30.000",
-    },
-  },
-  {
-    id: 2,
-    name: "Suzuki Swift GLX",
-    price: "6.000",
-    year: "2007",
-    engine: "1.3 benzin, 92 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80",
-    features: ["alacsony fogyasztás", "centrálzár", "évszaknak megfelelő gumik"],
-    pricing: {
-      daily: {
-        price: "7.000",
-        limit: "300km",
-      },
-      threeDays: {
-        price: "6.000",
-        limit: "200km",
-      },
-      sevenDays: "egyedi ár",
-      domesticDeposit: "20.000",
-      abroadDeposit: "30.000",
-    },
-  },
-  {
-    id: 3,
-    name: "Ford Focus Kombi",
-    price: "6.000",
-    year: "2007",
-    engine: "1.6 diesel, 89 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800&q=80",
-    features: ["alacsony fogyasztás", "klíma", "parkradar", "centrálzár", "évszaknak megfelelő gumik"],
-    pricing: {
-      daily: {
-        price: "7.000",
-        limit: "300km",
-      },
-      threeDays: {
-        price: "6.000",
-        limit: "200km",
-      },
-      sevenDays: "egyedi ár",
-      domesticDeposit: "20.000",
-      abroadDeposit: "30.000",
-    },
-  },
-  {
-    id: 5,
-    name: "Suzuki Swift",
-    price: "6.000",
-    year: "2007",
-    engine: "1.3 benzin, 92 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80",
-    features: ["alacsony fogyasztás", "klíma", "parkradar", "centrálzár", "évszaknak megfelelő gumik"],
-    pricing: {
-      daily: {
-        price: "7.000",
-        limit: "300km",
-      },
-      threeDays: {
-        price: "6.000",
-        limit: "200km",
-      },
-      sevenDays: "egyedi ár",
-      domesticDeposit: "20.000",
-      abroadDeposit: "30.000",
-    },
-  },
-];
+// Exportáljuk az autókat, hogy a booking komponens is használhassa
+export const cars: CarType[] = carsData as CarType[];
 
 export function ClientCars() {
   // A lokális state helyett a megosztott context-et használjuk
@@ -169,7 +73,7 @@ export function ClientCars() {
                     selectedCar === car.name ? "ring-2 ring-blue-500" : ""
                   }`}
                 >
-                  <div className="relative w-full h-48">
+                  <div className="relative w-full h-60">
                     <Image
                       src={car.image}
                       alt={car.name}
