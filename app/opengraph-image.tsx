@@ -19,68 +19,98 @@ export default async function OgImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(to bottom right, #3b82f6, #1e3a8a)',
+          backgroundColor: '#000000',
           color: 'white',
-          padding: '40px',
+          padding: '0',
+          position: 'relative',
         }}
       >
+        {/* Subtle car silhouette backdrop */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            opacity: 0.1,
+            backgroundImage: 'radial-gradient(circle at 70% 60%, #444 0%, #000 70%)',
+            zIndex: 1,
+          }}
+        />
+        
         <div
           style={{
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: '24px',
+            zIndex: 2,
+            width: '80%',
+            maxWidth: '900px',
+            padding: '20px',
           }}
         >
-          {/* Autó ikon - egyszerű SVG */}
-          <svg
-            width="64"
-            height="64"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ marginRight: '16px' }}
-          >
-            <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
-            <circle cx="6.5" cy="16.5" r="2.5"></circle>
-            <circle cx="16.5" cy="16.5" r="2.5"></circle>
-          </svg>
-          <h1
-            style={{
-              fontSize: '48px',
-              fontWeight: 'bold',
-              margin: 0,
-            }}
-          >
-            Molnár Autóbérlés
-          </h1>
+          {/* Logo Typography */}
+          <div style={{ 
+            fontFamily: 'serif', 
+            fontSize: '130px', 
+            fontWeight: '400', 
+            letterSpacing: '0.05em', 
+            marginBottom: '20px',
+            textAlign: 'center',
+          }}>
+            MOLNÁR
+          </div>
+          
+          <div style={{ 
+            fontSize: '40px', 
+            fontWeight: '300', 
+            letterSpacing: '0.2em', 
+            marginBottom: '40px',
+            textTransform: 'uppercase',
+          }}>
+            AUTÓBÉRLÉS
+          </div>
+          
+          <div style={{
+            width: '80%',
+            height: '1px',
+            backgroundColor: 'rgba(255,255,255,0.3)',
+            margin: '10px 0 40px 0',
+          }} />
+          
+          <div style={{
+            fontSize: '24px',
+            fontWeight: '300',
+            letterSpacing: '0.05em',
+            marginBottom: '40px',
+            textAlign: 'center',
+          }}>
+            ELEGÁNS MEGOLDÁS • MEGBÍZHATÓ SZOLGÁLTATÁS
+          </div>
+          
+          <div style={{
+            fontSize: '30px',
+            fontWeight: '400',
+            letterSpacing: '0.05em',
+            marginTop: '20px',
+          }}>
+            KŐSZEG
+          </div>
         </div>
-        <h2
-          style={{
-            fontSize: '28px',
-            fontWeight: 'normal',
-            marginBottom: '24px',
-            textAlign: 'center',
-          }}
-        >
-          Autóbérlés egyszerűen Kőszegen
-        </h2>
-        <p
-          style={{
-            fontSize: '20px',
-            textAlign: 'center',
-            maxWidth: '600px',
-          }}
-        >
-          Megbízható autók, rugalmas feltételek, professzionális szolgáltatás
-        </p>
       </div>
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: 'Serif',
+          data: await fetch(
+            new URL('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtXK-F2qC0s.woff')
+          ).then((res) => res.arrayBuffer()),
+          weight: 400,
+          style: 'normal',
+        },
+      ],
     }
   );
 }
