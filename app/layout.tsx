@@ -12,30 +12,34 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Az oldal URL-je környezeti változóból, fallback értékkel
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
+
 // SEO metaadatok
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu"),
+  metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Molnár Autóbérlés",
     default: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
   },
   description: "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
   keywords: ["autóbérlés", "Kőszeg", "bérlés", "autókölcsönzés", "Molnár Autóbérlés"],
-  authors: [{ name: process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés" }],
-  creator: process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés",
+  authors: [{ name: companyName }],
+  creator: companyName,
   openGraph: {
     type: "website",
     locale: "hu_HU",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu",
+    url: siteUrl,
     title: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
     description: "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
-    siteName: process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés",
+    siteName: companyName,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu"}/og-image.jpg`,
+        url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés Kőszeg",
+        alt: "Molnár Autóbérlés Kőszeg",
       },
     ],
   },
@@ -43,14 +47,20 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
     description: "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
-    images: [`${process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu"}/og-image.jpg`],
+    images: [`${siteUrl}/og-image.jpg`],
   },
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu",
+    canonical: siteUrl,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
