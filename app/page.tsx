@@ -8,12 +8,25 @@ import { ContactSection } from "@/components/sections/contact";
 import { CarProvider } from "@/provider/car-provider";
 import { Metadata } from "next";
 
+// Az oldal URL-je környezeti változóból, fallback értékkel
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+
 // További SEO beállítások
 export const metadata: Metadata = {
   title: "Autóbérlés egyszerűen Kőszegen",
   description: "Kedvező áron bérelhet megbízható autókat Kőszegen és környékén. Napi, heti és hosszútávú bérlés rugalmas feltételekkel a Molnár Autóbérlésnél.",
   alternates: {
-    canonical: "https://molnarautoberles.hu",
+    canonical: siteUrl,
+  },
+  openGraph: {
+    images: [
+      {
+        url: `${siteUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Molnár Autóbérlés Kőszeg",
+      },
+    ],
   },
 };
 
@@ -89,8 +102,8 @@ function SchemaMarkup() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": process.env.NEXT_PUBLIC_COMPANY_NAME,
-    "image": `${process.env.NEXT_PUBLIC_SITE_URL}/logo.jpg`,
-    "url": process.env.NEXT_PUBLIC_SITE_URL,
+    "image": `${siteUrl}/og-image.jpg`,
+    "url": siteUrl,
     "telephone": process.env.NEXT_PUBLIC_PHONE_NUMBER,
     "email": process.env.NEXT_PUBLIC_INFO_MAIL,
     "address": {
