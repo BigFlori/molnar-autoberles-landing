@@ -40,11 +40,10 @@ export async function sendEmail(token: string | null, formData: BookingFormData)
     
     const { name, email, phone, car, startDate, endDate, message } = result.data;
     
-    console.log(token);
-    
-
     // reCAPTCHA ellenőrzés
     const captchaData = await verifyCaptchaToken(token);
+    
+    console.log(captchaData);
 
     if(!captchaData) {
       return {
