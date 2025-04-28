@@ -1,6 +1,8 @@
 import React from "react";
 import { Calendar, CheckSquare, Clock, CreditCard, Car, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const rentalSteps = [
   {
@@ -43,7 +45,7 @@ export function RentalProcessSection() {
           Bérlési folyamat
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Az autóbérlés egyszerű folyamat a Molnár Autóbérlésnél. Az alábbiakban részletesen megismerheti a bérlés lépéseit, hogy felkészülten érkezzen hozzánk.
+          Az autóbérlés egyszerű folyamat a Molnár Autóbérlésnél. Az alábbiakban megismerheti a bérlés főbb lépéseit.
         </p>
         
         <div className="relative max-w-4xl mx-auto">
@@ -81,49 +83,15 @@ export function RentalProcessSection() {
           </div>
         </div>
         
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h3 className="text-2xl font-semibold text-center text-gray-900 mb-6">Bérlési feltételek</h3>
-          
-          <div className="space-y-6 text-gray-600">
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Alapvető feltételek</h4>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Minimum 21 éves életkor és legalább 2 éves vezetői tapasztalat</li>
-                <li>Érvényes személyi igazolvány vagy útlevél</li>
-                <li>Érvényes vezetői engedély</li>
-                <li>Lakcímkártya</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Fizetési feltételek</h4>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>A bérleti díj előre fizetendő a bérlés teljes időtartamára</li>
-                <li>A kaució összege belföldre 20.000 Ft, külföldi használatra 30.000 Ft</li>
-                <li>Elfogadunk készpénzt és bankkártyát is</li>
-                <li>Hosszabb bérlés esetén egyedi fizetési feltételek lehetségesek</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Biztosítás</h4>
-              <p>
-                Minden autónk rendelkezik kötelező felelősségbiztosítással. CASCO biztosítás szintén része a bérleti díjnak, 
-                amely 10% önrészt tartalmaz. Kiegészítő biztosítások (pl. önrészcsökkentés, utasbiztosítás) külön díj ellenében igényelhetők.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Korlátozások, tudnivalók</h4>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Napi bérlés esetén 300 km, 3 napos bérlés esetén napi 200 km használat van az árban, felette kilométerdíjat számítunk fel</li>
-                <li>Az autókat tisztán adjuk át és tisztán kérjük vissza</li>
-                <li>Dohányozni az autókban szigorúan tilos</li>
-                <li>Háziállat szállítása csak szállítóboxban lehetséges</li>
-                <li>Külföldi használat csak előzetes bejelentés alapján engedélyezett</li>
-              </ul>
-            </div>
-          </div>
+        <div className="mt-16 max-w-3xl mx-auto text-center">
+          <p className="text-gray-600 mb-6">
+            A bérlés részletes feltételeiről, a fizetési módokról, a biztosításról és egyéb tudnivalókról a Bérlési feltételek oldalunkon tájékozódhat.
+          </p>
+          <Button asChild className="bg-blue-600 hover:bg-blue-700">
+            <Link href="/berlesi-feltetelek">
+              Részletes bérlési feltételek
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

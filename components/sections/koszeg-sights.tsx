@@ -134,45 +134,6 @@ const sightCategories = [
   }
 ];
 
-const seasonalEvents = [
-  {
-    season: "Tavasz",
-    events: [
-      "Kőszegi Várszínház tavaszi előadásai (április-május)",
-      "Tavaszi Művészeti Fesztivál (április)",
-      "Alpokalja Triatlon (május)",
-      "Kőszegi Borünnep (május vége)"
-    ]
-  },
-  {
-    season: "Nyár",
-    events: [
-      "Kőszegi Ostromnapok (augusztus)",
-      "Kőszegi Várszínház (június-augusztus)",
-      "Nemzetközi Nyári Egyetem (július)",
-      "Félhold és Telihold - Kőszegi Orientalista Napok (augusztus)"
-    ]
-  },
-  {
-    season: "Ősz",
-    events: [
-      "Szüret és Szüreti Felvonulás (szeptember)",
-      "Orsolya-napi vásár (október)",
-      "Natúrpark Ízei Fesztivál (október)",
-      "Kőszegi Szőlő Jövésnek Könyve Ünnepség (április 24.)"
-    ]
-  },
-  {
-    season: "Tél",
-    events: [
-      "Adventi vásár és programok (december)",
-      "Kőszegi Advent (november-december)",
-      "Concordia-bál (január)",
-      "Farsangi mulatságok (február)"
-    ]
-  }
-];
-
 export function KoszegSightsSection() {
   return (
     <section id="koszeg" className="py-20 bg-gray-50">
@@ -210,35 +171,11 @@ export function KoszegSightsSection() {
           ))}
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl font-semibold text-center text-gray-900 mb-8">
-            Évszakonkénti programajánló
-          </h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {seasonalEvents.map((season, index) => (
-              <Card key={index} className="shadow-md">
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-semibold text-blue-600 mb-4">{season.season}</h4>
-                  <ul className="space-y-2">
-                    {season.events.map((event, eventIndex) => (
-                      <li key={eventIndex} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 shrink-0" />
-                        <span className="text-gray-700">{event}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Kőszeg környékén rengeteg a látnivaló, és saját autóval sokkal kényelmesebben felfedezheti a környék rejtett kincseit. Béreljen autót, és élvezze a szabadságot!
-            </p>
-            <ClientKoszegButton />
-          </div>
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Kőszeg környékén rengeteg a látnivaló, és saját autóval sokkal kényelmesebben felfedezheti a környék rejtett kincseit. Béreljen autót, és élvezze a szabadságot!
+          </p>
+          <ClientKoszegButton />
         </div>
       </div>
     </section>

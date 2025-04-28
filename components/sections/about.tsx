@@ -67,9 +67,6 @@ export function AboutSection() {
                 A Molnár Autóbérlés 2024 óta áll ügyfelei rendelkezésére Kőszegen és környékén. Családi vállalkozásként indultunk, azzal a céllal, hogy az autóbérlést egyszerűvé és stresszmentessé tegyük mindenki számára.
               </p>
               <p>
-                Alapítónk, Molnár János több mint 15 éves gépjárműipari tapasztalattal rendelkezik, így nemcsak az autókat ismeri kiválóan, de a bérlők igényeit is. Flottánkat gondosan válogattuk össze, hogy különböző igényeket és költségvetéseket is kiszolgáljunk.
-              </p>
-              <p>
                 Különös figyelmet fordítunk minden ügyfelünkre, és arra törekszünk, hogy a lehető legjobb szolgáltatást nyújtsuk. Autóinkat rendszeresen szervizeljük és tisztítjuk, hogy Ön mindig megbízható és tiszta járművet kapjon.
               </p>
             </div>

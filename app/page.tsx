@@ -2,12 +2,12 @@ import { Suspense } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero";
-import { AboutSection } from "@/components/sections/about"; // Kibővített rólunk szekció
+import { AboutSection } from "@/components/sections/about";
 import { ReviewsSection } from "@/components/sections/reviews";
 import { ContactSection } from "@/components/sections/contact";
-import { FAQSection } from "@/components/sections/faq"; // Új GYIK szekció
-import { RentalProcessSection } from "@/components/sections/rental-process"; // Új bérlési folyamat szekció
-import { KoszegSightsSection } from "@/components/sections/koszeg-sights"; // Új Kőszeg látnivalók szekció
+import { FAQSection } from "@/components/sections/faq";
+import { RentalProcessSection } from "@/components/sections/rental-process";
+import { KoszegSightsSection } from "@/components/sections/koszeg-sights";
 import { CarProvider } from "@/provider/car-provider";
 import { Metadata } from "next";
 
@@ -42,8 +42,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        {/* Kőszeg és környéke szekció */}
-        <KoszegSightsSection />
         {/* Bérlési folyamat szekció */}
         <RentalProcessSection />
         {/* Wrap the car-related sections with CarProvider */}
@@ -57,6 +55,8 @@ export default function Home() {
         </CarProvider>
         {/* GYIK szekció */}
         <FAQSection />
+        {/* Kőszeg és környéke szekció - lejjebb helyezve */}
+        <KoszegSightsSection />
         <ReviewsSection />
         <ContactSection />
       </main>

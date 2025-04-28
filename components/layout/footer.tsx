@@ -68,7 +68,10 @@ export function Footer() {
             <p className="text-sm text-gray-600">
               © {currentYear} {companyName}. Minden jog fenntartva.
             </p>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link href="/berlesi-feltetelek" className="text-sm text-gray-600 hover:text-blue-600">
+                Bérlési feltételek
+              </Link>
               <Link href="/adatkezeles" className="text-sm text-gray-600 hover:text-blue-600">
                 Adatkezelési tájékoztató
               </Link>

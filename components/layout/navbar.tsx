@@ -8,14 +8,13 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import Link from "next/link";
 import { formatPhoneNumber } from "@/utils/utils";
 
-// Frissített navigációs elemek az új szekciókkal
 const navItems = [
   { href: "#about", label: "Rólunk" },
-  { href: "#koszeg", label: "Látnivalók" },
   { href: "#rental-process", label: "Bérlési folyamat" },
   { href: "#cars", label: "Autóink" },
   { href: "#booking", label: "Foglalás" },
   { href: "#faq", label: "GYIK" },
+  { href: "#koszeg", label: "Látnivalók" },
   { href: "#contact", label: "Kapcsolat" },
 ];
 
