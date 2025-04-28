@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Car, Phone, Menu } from "lucide-react";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
@@ -8,10 +8,14 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import Link from "next/link";
 import { formatPhoneNumber } from "@/utils/utils";
 
+// Frissített navigációs elemek az új szekciókkal
 const navItems = [
   { href: "#about", label: "Rólunk" },
+  { href: "#koszeg", label: "Látnivalók" },
+  { href: "#rental-process", label: "Bérlési folyamat" },
   { href: "#cars", label: "Autóink" },
   { href: "#booking", label: "Foglalás" },
+  { href: "#faq", label: "GYIK" },
   { href: "#contact", label: "Kapcsolat" },
 ];
 
@@ -19,6 +23,7 @@ export function Navbar() {
   const activeSection = useActiveSection();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [manualActive, setManualActive] = useState<string | null>(null);
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
   const formattedPhone = formatPhoneNumber(phoneNumber);
 
@@ -38,14 +43,29 @@ export function Navbar() {
     };
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  // Kattintás-alapú navigáció
+  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const href = e.currentTarget.getAttribute("href");
     if (href) {
+      const targetId = href.slice(1);
+      // Manuálisan beállítjuk az aktív szekciót a kattintáskor
+      setManualActive(targetId);
+      
+      // Smooth scroll a kiválasztott szekcióhoz
       document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      
+      // 1 másodperc után töröljük a manuális kijelölést, hogy a scroll alapú észlelés folytatódhasson
+      setTimeout(() => {
+        setManualActive(null);
+      }, 1000);
+      
       setIsOpen(false);
     }
-  };
+  }, []);
+
+  // A végső aktív szekció: vagy a manuálisan beállított vagy a hook által meghatározott
+  const finalActiveSection = manualActive || activeSection;
 
   return (
     <header 
@@ -62,11 +82,11 @@ export function Navbar() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}>
           <Car className="h-5 w-5 md:h-6 md:w-6 text-blue-600" aria-hidden="true" />
-          <h1 className="text-base md:text-xl font-bold text-gray-900">Molnár Autóbérlés</h1>
+          <h2 className="text-base md:text-xl font-bold text-gray-900">Molnár Autóbérlés</h2>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center flex-1 gap-6">
+        <nav className="hidden md:flex items-center justify-center flex-1 gap-4 xl:gap-6 ml-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -74,13 +94,13 @@ export function Navbar() {
               onClick={handleClick}
               className={cn(
                 "text-sm font-medium transition-colors relative py-1",
-                activeSection === item.href.slice(1)
+                finalActiveSection === item.href.slice(1)
                   ? "text-blue-600"
                   : "text-gray-600 hover:text-blue-600"
               )}
             >
               {item.label}
-              {activeSection === item.href.slice(1) && (
+              {finalActiveSection === item.href.slice(1) && (
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 rounded-full" />
               )}
             </Link>
@@ -128,7 +148,7 @@ export function Navbar() {
                       onClick={handleClick}
                       className={cn(
                         "text-lg font-medium transition-colors py-2 border-b border-gray-100",
-                        activeSection === item.href.slice(1)
+                        finalActiveSection === item.href.slice(1)
                           ? "text-blue-600"
                           : "text-gray-600 hover:text-blue-600"
                       )}

@@ -16,6 +16,7 @@ import { format, addDays } from "date-fns";
 import { sendEmail } from "@/actions/send-email";
 import { useCarSelection } from "@/provider/car-provider";
 import { cars } from "./client-cars";
+import { ReCaptchaV3 } from "@/components/ui/recaptcha-v3";
 
 // Form validációs séma
 const formSchema = z.object({
@@ -37,6 +38,7 @@ export function ClientBooking() {
   // A Context-ből származó értékek
   const { selectedCar, setSelectedCar } = useCarSelection();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string>("");
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -67,10 +69,22 @@ export function ClientBooking() {
     return () => subscription.unsubscribe();
   }, [form, setSelectedCar, selectedCar]);
 
+  // reCAPTCHA token frissítése
+  const handleVerify = (token: string) => {
+    setCaptchaToken(token);
+  };
+
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     
     try {
+      // Ellenőrizzük, hogy van-e captcha token
+      if (!captchaToken) {
+        toast.error("Biztonsági ellenőrzés sikertelen. Kérjük, próbálja újra.");
+        setIsSubmitting(false);
+        return;
+      }
+      
       // Mai dátum ellenőrzése
       const today = new Date();
       today.setHours(0, 0, 0, 0); // Állítsd a mai dátumot éjfélre az összehasonlításhoz
@@ -95,6 +109,7 @@ export function ClientBooking() {
         ...data,
         startDate: format(startDate, 'yyyy-MM-dd'),
         endDate: format(endDate, 'yyyy-MM-dd'),
+        captchaToken: captchaToken,
       };
 
       // Server Action meghívása
@@ -106,7 +121,22 @@ export function ClientBooking() {
         setSelectedCar(""); // Töröljük a kiválasztott autót is
       } else {
         console.error("Hiba az email küldésekor:", result.error, result.details);
-        toast.error(`Hiba történt a küldés során: ${result.error}`);
+        
+        // Ha captcha hiba történt
+        if (result.error && result.error.includes("reCAPTCHA")) {
+          toast.error("Biztonsági ellenőrzés sikertelen. Kérjük, frissítse az oldalt és próbálja újra.");
+          // Új token kérése
+          try {
+            window.grecaptcha.ready(() => {
+              window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "", { action: 'booking' })
+                .then(setCaptchaToken);
+            });
+          } catch (err) {
+            console.error("Nem sikerült új captcha tokent generálni:", err);
+          }
+        } else {
+          toast.error(`Hiba történt a küldés során: ${result.error}`);
+        }
       }
     } catch (error) {
       console.error("Feldolgozási hiba:", error);
@@ -253,6 +283,15 @@ export function ClientBooking() {
                       </FormItem>
                     )}
                   />
+                  
+                  {/* Láthatatlan reCAPTCHA v3 */}
+                  <ReCaptchaV3 onVerify={handleVerify} action="booking" />
+                  
+                  <div className="text-sm text-gray-500 -mt-2">
+                    Az oldal védelmét Google reCAPTCHA biztosítja. 
+                    A foglalás elküldésével elfogadja a <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Google adatvédelmi irányelveit</a> és <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">felhasználási feltételeit</a>.
+                  </div>
+                  
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? "Küldés folyamatban..." : "Foglalás küldése"}
                   </Button>
