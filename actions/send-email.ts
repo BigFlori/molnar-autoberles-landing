@@ -3,6 +3,7 @@
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { formatPhoneNumber } from '@/utils/utils';
+import { verifyCaptchaToken } from '@/utils/captcha';
 
 // Validációs séma
 const bookingSchema = z.object({
@@ -13,47 +14,11 @@ const bookingSchema = z.object({
   startDate: z.string().min(1, { message: "Kérjük válasszon kezdő dátumot" }),
   endDate: z.string().min(1, { message: "Kérjük válasszon befejező dátumot" }),
   message: z.string().optional(),
-  captchaToken: z.string().min(1, { message: "ReCAPTCHA validáció szükséges" }),
 });
 
 type BookingFormData = z.infer<typeof bookingSchema>;
 
-// reCAPTCHA token validálása
-async function verifyCaptcha(token: string) {
-  try {
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `secret=${secretKey}&response=${token}`,
-    });
-
-    const data = await response.json();
-    
-    // Ellenőrizzük a captcha eredményt
-    // Az adatok tartalmazzák a success mezőt és a score értéket is (0.0 - 1.0 között)
-    if (data.success && data.score >= 0.5) {
-      return { success: true };
-    } else {
-      return { 
-        success: false, 
-        error: "A reCAPTCHA ellenőrzés sikertelen", 
-        details: `Score: ${data.score}, Error codes: ${data['error-codes'] ? data['error-codes'].join(', ') : 'none'}` 
-      };
-    }
-  } catch (error) {
-    console.error('reCAPTCHA ellenőrzési hiba:', error);
-    return { 
-      success: false, 
-      error: "Hiba történt a reCAPTCHA ellenőrzés során", 
-      details: error instanceof Error ? error.message : String(error) 
-    };
-  }
-}
-
-export async function sendEmail(formData: BookingFormData) {
+export async function sendEmail(token: string | null, formData: BookingFormData) {
   try {
     // Validálás
     const result = bookingSchema.safeParse(formData);
@@ -64,13 +29,38 @@ export async function sendEmail(formData: BookingFormData) {
         details: result.error.format()
       };
     }
+
+    if(!token) {
+      return {
+        success: false,
+        error: "A reCAPTCHA token hiányzik",
+        details: "A reCAPTCHA token hiányzik, kérjük próbálja újra."
+      };
+    }
     
-    const { name, email, phone, car, startDate, endDate, message, captchaToken } = result.data;
+    const { name, email, phone, car, startDate, endDate, message } = result.data;
     
     // reCAPTCHA ellenőrzés
-    const captchaResult = await verifyCaptcha(captchaToken);
-    if (!captchaResult.success) {
-      return captchaResult;
+    const captchaData = await verifyCaptchaToken(token);
+
+    if(!captchaData) {
+      return {
+        success: false,
+        error: "A reCAPTCHA ellenőrzés sikertelen",
+        details: "A reCAPTCHA ellenőrzés sikertelen, kérjük próbálja újra."
+      };
+    }
+
+    if (!captchaData.success || captchaData.score < 0.5) {
+      return {
+      success: false,
+      error: "A reCAPTCHA ellenőrzés sikertelen",
+      details: `A reCAPTCHA ellenőrzés sikertelen, kérjük próbálja újra. ${
+        !captchaData.success
+        ? `(${captchaData['error-codes'] ? captchaData['error-codes'].join(', ') : 'none'})`
+        : `(Score: ${captchaData.score})`
+      }`
+      };
     }
     
     // Céges adatok környezeti változókból
