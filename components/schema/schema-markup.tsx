@@ -1,5 +1,34 @@
 import React from "react";
-import { cars } from "@/components/sections/client-cars";
+// Eltávolítjuk a client-side cars importot
+// import { cars } from "@/components/sections/client-cars";
+
+// Statikus példa adatok a bemutatható autókról a séma számára
+const sampleCars = [
+  {
+    name: "Opel Astra H Kombi",
+    year: "2010",
+    engine: "1.7 Dízel, 110 LE",
+    seats: "5 személyes",
+    transmission: "Manuális",
+    price: "7000"
+  },
+  {
+    name: "Suzuki Swift GLX",
+    year: "2007",
+    engine: "1.3 benzin, 92 LE",
+    seats: "5 személyes",
+    transmission: "Manuális",
+    price: "6000"
+  },
+  {
+    name: "Ford Focus Kombi",
+    year: "2007",
+    engine: "1.6 diesel, 89 LE",
+    seats: "5 személyes",
+    transmission: "Manuális",
+    price: "6000"
+  }
+];
 
 // Strukturált adat a keresőmotoroknak - kibővített verzió
 export function SchemaMarkup() {
@@ -178,8 +207,8 @@ export function SchemaMarkup() {
     }
   };
 
-  // Elérhető autók adatai
-  const carOffers = cars.map(car => ({
+  // Elérhető autók adatai - statikus példa adatokból
+  const carOffers = sampleCars.map(car => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Car",
