@@ -34,9 +34,6 @@ export default function RentalTermsPage() {
                   <li>Érvényes vezetői engedély</li>
                   <li>Lakcímkártya</li>
                 </ul>
-                <p>
-                  Megjegyzés: Bizonyos prémium kategóriás autók bérlése esetén a minimum életkor 25 év lehet.
-                </p>
               </div>
             </section>
             
@@ -133,10 +130,10 @@ export default function RentalTermsPage() {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Biztosítás</h2>
               <div className="prose prose-blue max-w-none text-gray-600 space-y-4">
                 <p>
-                  Minden autónk rendelkezik kötelező felelősségbiztosítással. CASCO biztosítás szintén része a bérleti díjnak, amely 10% önrészt tartalmaz. 
+                  Minden autónk rendelkezik kötelező felelősségbiztosítással.
                 </p>
                 <p>
-                  Kiegészítő biztosítások (pl. önrészcsökkentés, utasbiztosítás) külön díj ellenében igényelhetők. Bérlés előtt részletes tájékoztatást adunk a biztosítási feltételekről.
+                  Kiegészítő biztosítások (pl. utasbiztosítás) külön díj ellenében igényelhetők. Bérlés előtt részletes tájékoztatást adunk a biztosítási feltételekről.
                 </p>
                 <p>
                   Baleset vagy káresemény esetén kérjük, azonnal értesítse cégünket a szerződésben található elérhetőségeken.

@@ -40,7 +40,7 @@ const faqItems = [
   },
   {
     question: "Van-e életkori korlátozás a bérléshez?",
-    answer: "Igen, autóbérléshez minimum 21 éves kor és legalább 2 éves vezetői tapasztalat szükséges. 25 év alatti vezetők esetében további felár jelentkezhet a biztosítási feltételek miatt. Egyes prémium kategóriás autóknál a minimum életkor 25 év lehet."
+    answer: "Igen, autóbérléshez minimum 21 éves kor és legalább 2 éves vezetői tapasztalat szükséges. Egyes prémium kategóriás autóknál a minimum életkor 25 év lehet."
   },
   {
     question: "Lehetséges-e hosszabbítani a bérlést?",
