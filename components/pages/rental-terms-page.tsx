@@ -22,7 +22,7 @@ export default function RentalTermsPage() {
             
             <h1 className="text-3xl font-bold text-gray-900 mb-6">Bérlési feltételek</h1>
             
-            <section className="mb-10">
+            <section className="mb-10" id="altalanos-feltetelek">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Általános bérlési feltételek</h2>
               <div className="prose prose-blue max-w-none text-gray-600 space-y-4">
                 <p>
@@ -42,10 +42,10 @@ export default function RentalTermsPage() {
             
             <Separator className="my-6" />
             
-            <section className="mb-10">
+            <section className="mb-10" id="berlesi-folyamat">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Bérlési folyamat</h2>
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" id="foglalas">
                   <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">1</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Foglalás</h3>
@@ -55,7 +55,7 @@ export default function RentalTermsPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" id="dokumentumok">
                   <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">2</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Dokumentumok</h3>
@@ -65,7 +65,7 @@ export default function RentalTermsPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" id="fizetes">
                   <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">3</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Szerződés és fizetés</h3>
@@ -75,7 +75,7 @@ export default function RentalTermsPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" id="atvetel">
                   <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">4</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Átvétel</h3>
@@ -85,7 +85,7 @@ export default function RentalTermsPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" id="hasznalat">
                   <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">5</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Használat</h3>
@@ -95,7 +95,7 @@ export default function RentalTermsPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" id="visszaadas">
                   <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">6</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Visszaadás</h3>
@@ -109,7 +109,7 @@ export default function RentalTermsPage() {
             
             <Separator className="my-6" />
             
-            <section className="mb-10">
+            <section className="mb-10" id="fizetesi-feltetelek">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Fizetési feltételek</h2>
               <div className="prose prose-blue max-w-none text-gray-600 space-y-4">
                 <p>
@@ -129,7 +129,7 @@ export default function RentalTermsPage() {
             
             <Separator className="my-6" />
             
-            <section className="mb-10">
+            <section className="mb-10" id="biztositas">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Biztosítás</h2>
               <div className="prose prose-blue max-w-none text-gray-600 space-y-4">
                 <p>
@@ -146,7 +146,7 @@ export default function RentalTermsPage() {
             
             <Separator className="my-6" />
             
-            <section className="mb-10">
+            <section className="mb-10" id="korlatozasok">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Korlátozások és további tudnivalók</h2>
               <div className="prose prose-blue max-w-none text-gray-600 space-y-4">
                 <p>
@@ -165,7 +165,7 @@ export default function RentalTermsPage() {
               </div>
             </section>
             
-            <div className="bg-gray-50 p-6 rounded-lg mt-8 border border-gray-200">
+            <div className="bg-gray-50 p-6 rounded-lg mt-8 border border-gray-200" id="foglalas-most">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Foglaljon most</h2>
               <p className="text-gray-600 mb-6">
                 Válassza ki a megfelelő autót és foglalja le egyszerűen, gyorsan. Kérdése van? Vegye fel velünk a kapcsolatot telefonon vagy e-mailben!
