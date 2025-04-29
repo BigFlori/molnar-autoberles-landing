@@ -60,9 +60,13 @@ export function FAQSection() {
   return (
     <section id="faq" className="py-20 bg-gray-50">
       <div className="container px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
           Gyakran Ismételt Kérdések
         </h2>
+        
+        <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+          Az autóbérlés folyamatával és feltételeivel kapcsolatos leggyakoribb kérdések és válaszok, hogy egyszerűen és kényelmesen intézhesse autóbérlését Kőszegen.
+        </p>
         
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
@@ -80,7 +84,7 @@ export function FAQSection() {
           
           <div className="text-center mt-10">
             <p className="text-gray-600">
-              További kérdése van? Forduljon hozzánk bizalommal telefonon vagy e-mailben!
+              További kérdése van? Forduljon hozzánk bizalommal telefonon vagy e-mailben, hogy az autóbérlés egyszerű folyamatát még gördülékenyebbé tegyük!
             </p>
           </div>
         </div>

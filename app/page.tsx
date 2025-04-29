@@ -19,7 +19,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu
 export const metadata: Metadata = {
   title: "Autóbérlés egyszerűen Kőszegen | Molnár Autóbérlés",
   description:
-    "Kedvező áron bérelhet megbízható autókat Kőszegen és környékén. Napi, heti és hosszútávú bérlés rugalmas feltételekkel a Molnár Autóbérlésnél. Fedezze fel a város és környéke látnivalóit saját tempójában.",
+    "Kedvező áron bérelhet megbízható autókat Kőszegen és környékén. Napi, heti és hosszútávú bérlés rugalmas feltételekkel a Molnár Autóbérlésnél.",
   alternates: {
     canonical: siteUrl,
   },

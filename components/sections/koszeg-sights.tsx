@@ -151,13 +151,13 @@ export function KoszegSightsSection() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <category.icon className="h-8 w-8 text-blue-600" />
-                  <h3 className="text-xl font-semibold text-gray-900">{category.title}</h3>
+                  <p className="text-xl font-semibold text-gray-900">{category.title}</p>
                 </div>
                 
                 <div className="space-y-4">
                   {category.sights.map((sight, sightIndex) => (
                     <div key={sightIndex} className="border-b border-gray-100 pb-4 last:border-0">
-                      <h4 className="font-semibold text-gray-900 mb-1">{sight.name}</h4>
+                      <strong className="block font-semibold text-gray-900 mb-1">{sight.name}</strong>
                       <p className="text-sm text-gray-600 mb-2">{sight.description}</p>
                       <p className="text-xs text-blue-600 font-medium">
                         <Compass className="h-3 w-3 inline-block mr-1" />
@@ -173,7 +173,7 @@ export function KoszegSightsSection() {
         
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Kőszeg környékén rengeteg a látnivaló, és saját autóval sokkal kényelmesebben felfedezheti a környék rejtett kincseit. Béreljen autót, és élvezze a szabadságot!
+            Kőszeg környékén rengeteg a látnivaló, és saját autóval sokkal kényelmesebben felfedezheti az autóbérlés egyszerű folyamatával a környék rejtett kincseit. Béreljen autót, és élvezze a szabadságot!
           </p>
           <ClientKoszegButton />
         </div>
