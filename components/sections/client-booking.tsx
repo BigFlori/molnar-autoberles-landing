@@ -268,6 +268,11 @@ export function ClientBooking() {
                     Az oldal védelmét Google reCAPTCHA biztosítja. 
                     A foglalás elküldésével elfogadja a <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Google adatvédelmi irányelveit</a> és <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">felhasználási feltételeit</a>.
                   </div>
+
+                  <div className="text-sm text-gray-500 -mt-2">
+                    Az űrlap kitöltése és elküldése nem jelenti automatikusan a foglalás véglegesítését.
+                    A foglalás véglegesítéséhez fel vesszük Önnel a kapcsolatot.
+                  </div>
                   
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? "Küldés folyamatban..." : "Foglalás küldése"}
