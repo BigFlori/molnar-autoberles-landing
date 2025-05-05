@@ -86,7 +86,7 @@ export function ClientCars() {
                   </div>
                   <CardContent className="p-4 flex flex-col flex-1">
                     <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-lg font-semibold text-gray-900">{car.name}</h3>
+                      <p className="text-lg font-semibold text-gray-900">{car.name}</p>
                       <p className="text-lg font-bold text-blue-600">
                         {car.price} Ft<span className="text-sm font-normal">/nap</span>
                       </p>
@@ -114,7 +114,8 @@ export function ClientCars() {
                     <Separator className="my-3" />
 
                     <div className="space-y-2 mb-3">
-                      <h4 className="font-semibold text-sm">Felszereltség:</h4>
+                      {/* H4 helyett erős szöveget használunk */}
+                      <p className="font-semibold text-sm">Felszereltség:</p>
                       <ul className="grid grid-cols-2 gap-1.5 text-xs text-gray-600">
                         {car.features.map((feature, index) => (
                           <li key={index} className="flex items-center gap-1.5">
@@ -128,7 +129,8 @@ export function ClientCars() {
                     <Separator className="my-3" />
 
                     <div className="space-y-2 flex-1">
-                      <h4 className="font-semibold text-sm">Díjszabás:</h4>
+                      {/* H4 helyett erős szöveget használunk */}
+                      <p className="font-semibold text-sm">Díjszabás:</p>
                       <div className="space-y-1 text-xs text-gray-600">
                         <p>
                           Napi díj: {car.pricing.daily.price} Ft ({car.pricing.daily.limit}-ig)

@@ -16,6 +16,7 @@ import { format, addDays } from "date-fns";
 import { sendEmail } from "@/actions/send-email";
 import { useCarSelection } from "@/provider/car-provider";
 import { cars } from "./client-cars";
+import { getCaptchaToken } from "@/utils/captcha";
 
 // Form validációs séma
 const formSchema = z.object({
@@ -70,7 +71,7 @@ export function ClientBooking() {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     
-    try {
+    try {      
       // Mai dátum ellenőrzése
       const today = new Date();
       today.setHours(0, 0, 0, 0); // Állítsd a mai dátumot éjfélre az összehasonlításhoz
@@ -97,16 +98,25 @@ export function ClientBooking() {
         endDate: format(endDate, 'yyyy-MM-dd'),
       };
 
+      // Captcha token
+      const token = await getCaptchaToken();
+
       // Server Action meghívása
-      const result = await sendEmail(formattedData);
+      const result = await sendEmail(token, formattedData);
 
       if (result.success) {
         toast.success("Foglalási kérelmét sikeresen elküldtük!");
         form.reset();
-        setSelectedCar(""); // Töröljük a kiválasztott autót is
+        setSelectedCar("");
       } else {
         console.error("Hiba az email küldésekor:", result.error, result.details);
-        toast.error(`Hiba történt a küldés során: ${result.error}`);
+        
+        // Ha captcha hiba történt
+        if (result.error && result.error.includes("reCAPTCHA")) {
+          toast.error("reCAPTCHA érvényesítési hiba történt. Kérjük, próbálja újra.");
+        } else {
+          toast.error(`Hiba történt a küldés során: ${result.error}`);
+        }
       }
     } catch (error) {
       console.error("Feldolgozási hiba:", error);
@@ -253,6 +263,17 @@ export function ClientBooking() {
                       </FormItem>
                     )}
                   />
+                  
+                  <div className="text-sm text-gray-500 -mt-2">
+                    Az oldal védelmét Google reCAPTCHA biztosítja. 
+                    A foglalás elküldésével elfogadja a <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Google adatvédelmi irányelveit</a> és <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">felhasználási feltételeit</a>.
+                  </div>
+
+                  <div className="text-sm text-gray-500 -mt-2">
+                    Az űrlap kitöltése és elküldése nem jelenti automatikusan a foglalás véglegesítését.
+                    A foglalás véglegesítéséhez fel vesszük Önnel a kapcsolatot.
+                  </div>
+                  
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? "Küldés folyamatban..." : "Foglalás küldése"}
                   </Button>

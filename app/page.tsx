@@ -5,19 +5,37 @@ import { HeroSection } from "@/components/sections/hero";
 import { AboutSection } from "@/components/sections/about";
 import { ReviewsSection } from "@/components/sections/reviews";
 import { ContactSection } from "@/components/sections/contact";
+import { FAQSection } from "@/components/sections/faq";
+import { RentalProcessSection } from "@/components/sections/rental-process";
+import { KoszegSightsSection } from "@/components/sections/koszeg-sights";
 import { CarProvider } from "@/provider/car-provider";
 import { Metadata } from "next";
+import { SchemaMarkup } from "@/components/schema/schema-markup";
 
 // Az oldal URL-je környezeti változóból, fallback értékkel
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
 
 // További SEO beállítások
 export const metadata: Metadata = {
-  title: "Autóbérlés egyszerűen Kőszegen",
-  description: "Kedvező áron bérelhet megbízható autókat Kőszegen és környékén. Napi, heti és hosszútávú bérlés rugalmas feltételekkel a Molnár Autóbérlésnél.",
+  title: "Autóbérlés egyszerűen Kőszegen | Molnár Autóbérlés",
+  description:
+    "Kedvező áron bérelhet megbízható autókat Kőszegen és környékén. Napi, heti és hosszútávú bérlés rugalmas feltételekkel a Molnár Autóbérlésnél.",
   alternates: {
     canonical: siteUrl,
   },
+  keywords: [
+    "autóbérlés",
+    "Kőszeg",
+    "bérlés",
+    "autókölcsönzés",
+    "olcsó autóbérlés",
+    "megbízható autó",
+    "Molnár Autóbérlés",
+    "hosszú távú autóbérlés",
+    "autókölcsönző",
+    "autóbérlés Vas megye",
+    "hétvégi autóbérlés"
+  ],
 };
 
 // Főoldal szerver komponens
@@ -28,6 +46,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        {/* Bérlési folyamat szekció */}
+        <RentalProcessSection />
         {/* Wrap the car-related sections with CarProvider */}
         <CarProvider>
           <Suspense fallback={<CarsSectionSkeleton />}>
@@ -37,6 +57,10 @@ export default function Home() {
             <ClientBooking />
           </Suspense>
         </CarProvider>
+        {/* GYIK szekció */}
+        <FAQSection />
+        {/* Kőszeg és környéke szekció - lejjebb helyezve */}
+        <KoszegSightsSection />
         <ReviewsSection />
         <ContactSection />
       </main>
@@ -78,60 +102,6 @@ function BookingSectionSkeleton() {
 }
 
 // Dinamikusan importált client komponensek
-const ClientCars = dynamic(
-  () => import("@/components/sections/client-cars").then((mod) => mod.ClientCars),
-);
+const ClientCars = dynamic(() => import("@/components/sections/client-cars").then((mod) => mod.ClientCars));
 
-const ClientBooking = dynamic(
-  () => import("@/components/sections/client-booking").then((mod) => mod.ClientBooking),
-);
-
-// Strukturált adat a keresőmotoroknak
-function SchemaMarkup() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": process.env.NEXT_PUBLIC_COMPANY_NAME,
-    "image": `${siteUrl}/opengraph-image.png`, // Frissítve az új OG kép URL-re
-    "url": siteUrl,
-    "telephone": process.env.NEXT_PUBLIC_PHONE_NUMBER,
-    "email": process.env.NEXT_PUBLIC_INFO_MAIL,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": process.env.NEXT_PUBLIC_COMPANY_STREET_ADDRESS,
-      "addressLocality": process.env.NEXT_PUBLIC_COMPANY_CITY,
-      "postalCode": process.env.NEXT_PUBLIC_COMPANY_POSTAL_CODE,
-      "addressCountry": process.env.NEXT_PUBLIC_COMPANY_COUNTRY
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 47.38816005197496,
-      "longitude": 16.5403936950067
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"],
-        "opens": "08:00",
-        "closes": "22:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "09:00",
-        "closes": "20:00"
-      }
-    ],
-    "priceRange": "$$",
-    "sameAs": [
-      process.env.NEXT_PUBLIC_FACEBOOK_URL
-    ]
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-    />
-  );
-}
+const ClientBooking = dynamic(() => import("@/components/sections/client-booking").then((mod) => mod.ClientBooking));

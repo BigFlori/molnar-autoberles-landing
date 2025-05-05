@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { StickyMobileCallButton } from "@/components/ui/sticky-mobile-call-button";
+import Script from "next/script";
 
 // Optimalizált fontbetöltés
 const inter = Inter({
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
     template: "%s | Molnár Autóbérlés",
     default: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
   },
-  description: "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
+  description:
+    "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
   keywords: ["autóbérlés", "Kőszeg", "bérlés", "autókölcsönzés", "Molnár Autóbérlés"],
   authors: [{ name: companyName }],
   creator: companyName,
@@ -32,13 +34,15 @@ export const metadata: Metadata = {
     locale: "hu_HU",
     url: siteUrl,
     title: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
-    description: "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
+    description:
+      "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
     siteName: companyName,
   },
   twitter: {
     card: "summary_large_image",
     title: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
-    description: "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
+    description:
+      "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
   },
   alternates: {
     canonical: siteUrl,
@@ -49,8 +53,8 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -63,14 +67,11 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="hu" className={inter.variable}>
       <body className={inter.className}>
+        <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy="beforeInteractive" />
         {children}
         <StickyMobileCallButton />
         <Toaster position="top-center" />

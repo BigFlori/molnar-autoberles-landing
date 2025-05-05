@@ -68,8 +68,11 @@ export function Footer() {
             <p className="text-sm text-gray-600">
               © {currentYear} {companyName}. Minden jog fenntartva.
             </p>
-            <div className="flex items-center space-x-4">
-              <Link href="/adatkezeles" className="text-sm text-gray-600 hover:text-blue-600">
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link href="/berlesi-feltetelek" className="text-sm text-gray-600 hover:text-blue-600">
+                Bérlési feltételek
+              </Link>
+              {/* <Link href="/adatkezeles" className="text-sm text-gray-600 hover:text-blue-600">
                 Adatkezelési tájékoztató
               </Link>
               <Link href="/aszf" className="text-sm text-gray-600 hover:text-blue-600">
@@ -77,7 +80,7 @@ export function Footer() {
               </Link>
               <Link href="/sutik" className="text-sm text-gray-600 hover:text-blue-600">
                 Süti kezelés
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

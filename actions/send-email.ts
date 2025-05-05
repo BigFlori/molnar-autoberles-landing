@@ -3,6 +3,7 @@
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { formatPhoneNumber } from '@/utils/utils';
+import { verifyCaptchaToken } from '@/utils/captcha';
 
 // Validációs séma
 const bookingSchema = z.object({
@@ -17,7 +18,7 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>;
 
-export async function sendEmail(formData: BookingFormData) {
+export async function sendEmail(token: string | null, formData: BookingFormData) {
   try {
     // Validálás
     const result = bookingSchema.safeParse(formData);
@@ -28,8 +29,41 @@ export async function sendEmail(formData: BookingFormData) {
         details: result.error.format()
       };
     }
+
+    if(!token) {
+      return {
+        success: false,
+        error: "A reCAPTCHA token hiányzik",
+        details: "A reCAPTCHA token hiányzik, kérjük próbálja újra."
+      };
+    }
     
     const { name, email, phone, car, startDate, endDate, message } = result.data;
+    
+    // reCAPTCHA ellenőrzés
+    const captchaData = await verifyCaptchaToken(token);
+    
+    console.log(captchaData);
+
+    if(!captchaData) {
+      return {
+        success: false,
+        error: "A reCAPTCHA ellenőrzés sikertelen",
+        details: "A reCAPTCHA ellenőrzés sikertelen, kérjük próbálja újra."
+      };
+    }
+
+    if (!captchaData.success || captchaData.score < 0.5) {
+      return {
+      success: false,
+      error: "A reCAPTCHA ellenőrzés sikertelen",
+      details: `A reCAPTCHA ellenőrzés sikertelen, kérjük próbálja újra. ${
+        !captchaData.success
+        ? `(${captchaData['error-codes'] ? captchaData['error-codes'].join(', ') : 'none'})`
+        : `(Score: ${captchaData.score})`
+      }`
+      };
+    }
     
     // Céges adatok környezeti változókból
     const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
