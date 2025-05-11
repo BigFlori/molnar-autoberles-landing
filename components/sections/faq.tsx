@@ -16,7 +16,7 @@ const faqItems = [
     - Érvényes személyi igazolvány vagy útlevél
     - Legalább 2 éve érvényes vezetői engedély
     - Lakcímkártya
-    - A bérlés díjának és a kauciónak megfelelő fedezet (készpénz vagy bankkártya)`
+    - A bérlés díjának és a kauciónak megfelelő fedezet (készpénz vagy utalás)`
   },
   {
     question: "Mennyi a minimum bérlési idő?",
@@ -24,7 +24,7 @@ const faqItems = [
   },
   {
     question: "Mi a teendő meghibásodás vagy baleset esetén?",
-    answer: `Meghibásodás vagy baleset esetén kérjük, azonnal vegye fel velünk a kapcsolatot telefonon. 24 órás ügyfélszolgálatunk segít a probléma megoldásában. A bérleti szerződésben található biztosítási feltételek szerint járunk el. A szükséges segélyhívó számokat és eljárásrendet a kesztyűtartóban található dokumentumok tartalmazzák.`
+    answer: `Meghibásodás vagy baleset esetén kérjük, azonnal vegye fel velünk a kapcsolatot telefonon. 24 órás ügyfélszolgálatunk segít a probléma megoldásában. A bérleti szerződésben található biztosítási feltételek szerint járunk el.`
   },
   {
     question: "Lehet-e az autóval külföldre utazni?",
@@ -48,11 +48,11 @@ const faqItems = [
   },
   {
     question: "Mi történik túlfutott kilométerek esetén?",
-    answer: "A napi, valamint a 3 napos bérlési konstrukciónál meghatározott kilométer limit van érvényben. A limit felett extra kilométerdíjat számítunk fel, amelynek mértéke 50 Ft/km. Hosszabb időtartamú bérlés esetén egyedi kilométer-megállapodás is lehetséges."
+    answer: "A napi, valamint a 2 vagy több napos bérlési konstrukciónál meghatározott kilométer limit van érvényben. A limit felett extra kilométerdíjat számítunk fel, amelynek mértéke 50 Ft/km. Hosszabb időtartamú bérlés esetén egyedi kilométer-megállapodás is lehetséges."
   },
   {
     question: "Mennyibe kerül a kaució és hogyan kapom vissza?",
-    answer: "A kaució összege belföldre 20.000 Ft, külföldi használat esetén 30.000 Ft. A kauciót készpénzben vagy bankkártyával lehet letétbe helyezni. A jármű sérülésmentes visszaszolgáltatása esetén a kaució teljes összegét azonnal visszakapja. Bankkártyás fizetés esetén a visszautalás 2-3 munkanapot vesz igénybe."
+    answer: "A kaució összege típus függő, személyautók esetében jellemzően 20.000 Ft belföldre, 30.000 Ft külföldi használat esetén. Kisbusz esetén 50.000 – 100.000 Ft között alakul. A kauciót készpénzben vagy utalással lehet letétbe helyezni. A jármű sérülésmentes visszaszolgáltatása esetén a kaució teljes összegét azonnal visszakapja. Utalásos fizetés esetén a visszautalás legfeljebb 3 munkanapot vesz igénybe."
   }
 ];
 

@@ -67,7 +67,7 @@ export default function RentalTermsPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Szerződés és fizetés</h3>
                     <p className="text-gray-600">
-                      Az átvétel előtt átnézzük és aláírjuk a bérleti szerződést. A bérleti díj és a kaució befizetése készpénzben vagy bankkártyával lehetséges.
+                      Az átvétel előtt átnézzük és aláírjuk a bérleti szerződést. A bérleti díj és a kaució befizetése készpénzzel vagy utalással lehetséges.
                     </p>
                   </div>
                 </div>
@@ -114,8 +114,8 @@ export default function RentalTermsPage() {
                 </p>
                 <ul className="list-disc pl-5 space-y-2">
                   <li>A bérleti díj előre fizetendő a bérlés teljes időtartamára</li>
-                  <li>A kaució összege belföldre 20.000 Ft, külföldi használatra 30.000 Ft</li>
-                  <li>Elfogadunk készpénzt és bankkártyát is</li>
+                  <li>A kaució összege típus függő, személyautók esetében jellemzően 20.000 Ft belföldre, 30.000 Ft külföldi használat esetén. Kisbusz esetén 50.000 – 100.000 Ft között alakul.</li>
+                  <li>Kizárólag készpénzzel vagy utalással lehetséges fizetni.</li>
                   <li>Hosszabb bérlés esetén egyedi fizetési feltételek lehetségesek</li>
                 </ul>
                 <p>
@@ -150,7 +150,7 @@ export default function RentalTermsPage() {
                   Az autóbérlés során az alábbi korlátozások és szabályok érvényesek:
                 </p>
                 <ul className="list-disc pl-5 space-y-2">
-                  <li>Napi bérlés esetén 300 km, 3 napos bérlés esetén napi 200 km használat van az árban, felette kilométerdíjat számítunk fel (50 Ft/km)</li>
+                  <li>Napi bérlés esetén 300 km, 2 vagy több napos bérlés esetén napi 200 km használat van az árban, felette kilométerdíjat számítunk fel (50 Ft/km)</li>
                   <li>Az autókat tisztán adjuk át és tisztán kérjük vissza</li>
                   <li>Dohányozni az autókban szigorúan tilos</li>
                   <li>Háziállat szállítása csak szállítóboxban lehetséges</li>
