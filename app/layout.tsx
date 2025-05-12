@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { StickyMobileCallButton } from "@/components/ui/sticky-mobile-call-button";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next"
 
 // Optimalizált fontbetöltés
 const inter = Inter({
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="hu" className={inter.variable}>
       <body className={inter.className}>
+        <Analytics />
         <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy="beforeInteractive" />
         {children}
         <StickyMobileCallButton />
