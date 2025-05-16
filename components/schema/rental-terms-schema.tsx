@@ -1,7 +1,7 @@
 import React from "react";
 
 export function RentalTermsSchemaMarkup() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
   
   // Strukturált adatok a bérlési feltételek oldalhoz
   const schemaData = [

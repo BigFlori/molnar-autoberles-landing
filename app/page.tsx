@@ -13,7 +13,7 @@ import { Metadata } from "next";
 import { SchemaMarkup } from "@/components/schema/schema-markup";
 
 // Az oldal URL-je környezeti változóból, fallback értékkel
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
 
 // További SEO beállítások
 export const metadata: Metadata = {
