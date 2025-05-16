@@ -6,7 +6,7 @@ import { RentalTermsSchemaMarkup } from "@/components/schema/rental-terms-schema
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
 
 export const metadata: Metadata = {
-  title: "Bérlési feltételek | Molnár Autóbérlés",
+  title: "Bérlési feltételek",
   description: "Ismerje meg autóbérlési szolgáltatásunk részletes feltételeit. Világos, átlátható és egyszerű bérlési folyamat Kőszegen és környékén.",
   alternates: {
     canonical: `${siteUrl}/berlesi-feltetelek`,
