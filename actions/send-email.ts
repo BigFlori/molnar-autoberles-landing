@@ -2,7 +2,7 @@
 
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { formatPhoneNumber } from '@/utils/utils';
+import { formatPhoneNumber, getFullAddress } from '@/utils/utils';
 import { verifyCaptchaToken } from '@/utils/captcha';
 
 // Validációs séma
@@ -67,8 +67,8 @@ export async function sendEmail(token: string | null, formData: BookingFormData)
     
     // Céges adatok környezeti változókból
     const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
-    const companyAddress = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "9730 Kőszeg, Fő tér 1.";
-    const companyPhone = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+    const companyAddress = getFullAddress() || "9730 Kőszeg, Várkör 61.";
+    const companyPhone = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36306991993";
     const formattedCompanyPhone = formatPhoneNumber(companyPhone);
     const companyEmail = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
     
