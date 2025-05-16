@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 // Az oldal URL-je környezeti változóból, fallback értékkel
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
 
 // SEO metaadatok

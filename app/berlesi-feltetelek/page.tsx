@@ -3,7 +3,7 @@ import RentalTermsPage from "@/components/pages/rental-terms-page";
 import { RentalTermsSchemaMarkup } from "@/components/schema/rental-terms-schema";
 
 // Az oldal URL-je környezeti változóból, fallback értékkel
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
 
 export const metadata: Metadata = {
   title: "Bérlési feltételek | Molnár Autóbérlés",

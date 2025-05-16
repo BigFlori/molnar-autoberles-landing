@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://molnarautoberles.hu';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.molnarautoberles.hu';
   
   return [
     {
@@ -11,22 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/adatkezeles`,
+      url: `${baseUrl}/berlesi-feltetelek`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/aszf`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/sutik`,
-      lastModified: new Date(), 
-      changeFrequency: 'monthly',
-      priority: 0.3,
     },
   ];
 }

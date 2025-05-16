@@ -32,7 +32,7 @@ const sampleCars = [
 
 // Strukturált adat a keresőmotoroknak - kibővített verzió
 export function SchemaMarkup() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://molnarautoberles.hu";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
   const email = process.env.NEXT_PUBLIC_INFO_MAIL;
 
