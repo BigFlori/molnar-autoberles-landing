@@ -11,6 +11,7 @@ type SeoParams = {
 // Root layout speciális metaadatok
 export const layoutMetadata: Metadata = {
   metadataBase: new URL(site.url),
+
   robots: {
     index: true,
     follow: true,
@@ -27,7 +28,7 @@ export const layoutMetadata: Metadata = {
 const defaultSeo = {
   siteName: site.company.name,
   title: "Molnár Autóbérlés Kőszeg",
-  description: "Autóbérlés Kőszegen és környékén kedvező árakon. Megbízható járművek, rugalmas bérlési feltételek, helyi szolgáltatás a belvárosban. Napi, heti és hosszútávú bérlés.",
+  description: "Autóbérlés Kőszegen és környékén kedvező árakon. Megbízható járművek, rugalmas bérlési feltételek. Napi, heti és hosszútávú bérlés.",
   keywords: [
     "autóbérlés", 
     "autóbérlés kőszeg", 
@@ -45,12 +46,12 @@ const defaultSeo = {
 export const pageSeo = {
   home: {
     title: "Molnár Autóbérlés Kőszeg - Kedvező árak, megbízható autók",
-    description: "Autóbérlés Kőszegen és környékén kedvező árakon. Megbízható járművek, rugalmas bérlési feltételek, helyi szolgáltatás a belvárosban. Napi, heti és hosszútávú bérlés.",
+    description: "Autóbérlés Kőszegen és környékén kedvező árakon. Megbízható járművek, rugalmas bérlési feltételek. Napi, heti és hosszútávú bérlés.",
     path: "",
   },
   rentalTerms: {
     title: "Autóbérlési feltételek | Molnár Autóbérlés Kőszeg",
-    description: "Ismerje meg az autóbérlés feltételeit Kőszegen. Világos, átlátható és egyszerű bérlési folyamat, kedvező kaució, rugalmas átvétel Vas megyében.",
+    description: "Ismerje meg az autóbérlés feltételeit. Világos, átlátható és egyszerű bérlési folyamat, rugalmas átvétel Vas megyében.",
     keywords: [
       "autóbérlés feltételek", 
       "bérlési dokumentumok", 
@@ -87,6 +88,9 @@ export function generateMetadata({
     keywords: fullKeywords,
     authors: [{ name: site.company.name }],
     creator: site.company.name,
+    other: {
+      'next-size-adjust': '100%',
+    },
     openGraph: {
       type: "website",
       locale: "hu_HU",
