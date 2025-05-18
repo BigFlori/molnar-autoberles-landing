@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Facebook, Mail, Phone, MapPin, Clock } from "lucide-react";
 import Link from "next/link";
 import { ClientContactMap } from "./client-contact-map";
 import { formatPhoneNumber, getFullAddress } from "@/utils/utils";
+import { site } from "@/config/site-config";
 
 export function ContactSection() {
-  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+  const phoneNumber = site.company.phone;
   const formattedPhone = formatPhoneNumber(phoneNumber);
-  const email = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
-  const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com";
-  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
+  const email = site.company.email;
+  const facebookUrl = site.social.facebook;
   const companyAddress = getFullAddress();
-  const googleMapsUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL || "https://maps.google.com";
+  const googleMapsUrl = site.maps.googleMapsUrl;
   
   return (
     <section 
@@ -101,13 +101,6 @@ export function ContactSection() {
                     <Button variant="outline" size="icon" asChild>
                       <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook oldal">
                         <Facebook className="h-5 w-5" />
-                      </a>
-                    </Button>
-                  )}
-                  {instagramUrl && (
-                    <Button variant="outline" size="icon" asChild>
-                      <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram profil">
-                        <Instagram className="h-5 w-5" />
                       </a>
                     </Button>
                   )}

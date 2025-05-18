@@ -1,15 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Calendar, CheckSquare, Clock, CreditCard, Car } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 export default function RentalTermsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white">
-      <Navbar />
       <main className="flex-1 py-12">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto">
@@ -20,7 +17,7 @@ export default function RentalTermsPage() {
               </Link>
             </div>
             
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Bérlési feltételek</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Autóbérlési feltételek</h1>
             
             <section className="mb-10" id="altalanos-feltetelek">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Általános bérlési feltételek</h2>
@@ -183,7 +180,6 @@ export default function RentalTermsPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

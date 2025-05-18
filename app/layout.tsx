@@ -5,6 +5,10 @@ import { Toaster } from "sonner";
 import { StickyMobileCallButton } from "@/components/ui/sticky-mobile-call-button";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next"
+import { layoutMetadata } from "@/config/seo-config";
+import { site } from "@/config/site-config";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 // Optimalizált fontbetöltés
 const inter = Inter({
@@ -14,51 +18,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-// Az oldal URL-je környezeti változóból, fallback értékkel
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
-const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
-
-// SEO metaadatok
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    template: "%s | Molnár Autóbérlés",
-    default: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
-  },
-  description:
-    "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
-  keywords: ["autóbérlés", "Kőszeg", "bérlés", "autókölcsönzés", "Molnár Autóbérlés"],
-  authors: [{ name: companyName }],
-  creator: companyName,
-  openGraph: {
-    type: "website",
-    locale: "hu_HU",
-    url: siteUrl,
-    title: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
-    description:
-      "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
-    siteName: companyName,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Molnár Autóbérlés - Autóbérlés egyszerűen Kőszegen",
-    description:
-      "Béreljen autót egyszerűen és gyorsan Kőszegen. Megbízható autók, rugalmas feltételek, professzionális szolgáltatás.",
-  },
-  alternates: {
-    canonical: siteUrl,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
+export const metadata: Metadata = layoutMetadata;
 
 // Viewport beállítások
 export const viewport: Viewport = {
@@ -73,10 +33,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="hu" className={inter.variable}>
       <body className={inter.className}>
         <Analytics />
-        <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy="beforeInteractive" />
+        <Script src={`https://www.google.com/recaptcha/api.js?render=${site.recaptcha.siteKey}`} strategy="beforeInteractive" />
+        <Navbar />
         {children}
         <StickyMobileCallButton />
         <Toaster position="top-center" />
+        <Footer />
       </body>
     </html>
   );

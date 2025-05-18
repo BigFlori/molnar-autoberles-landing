@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { formatPhoneNumber, getFullAddress } from '@/utils/utils';
 import { verifyCaptchaToken } from '@/utils/captcha';
+import { site } from '@/config/site-config';
 
 // Validációs séma
 const bookingSchema = z.object({
@@ -66,11 +67,11 @@ export async function sendEmail(token: string | null, formData: BookingFormData)
     }
     
     // Céges adatok környezeti változókból
-    const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
+    const companyName = site.company.name;
     const companyAddress = getFullAddress() || "9730 Kőszeg, Várkör 61.";
-    const companyPhone = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36306991993";
+    const companyPhone = site.company.phone;
     const formattedCompanyPhone = formatPhoneNumber(companyPhone);
-    const companyEmail = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
+    const companyEmail = site.company.email;
     
     // Email szöveg összeállítása
     const emailText = `

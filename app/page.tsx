@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero";
 import { AboutSection } from "@/components/sections/about";
@@ -11,38 +10,15 @@ import { KoszegSightsSection } from "@/components/sections/koszeg-sights";
 import { CarProvider } from "@/provider/car-provider";
 import { Metadata } from "next";
 import { SchemaMarkup } from "@/components/schema/schema-markup";
+import { generateMetadata, pageSeo } from "@/config/seo-config";
+import dynamic from "next/dynamic";
 
-// Az oldal URL-je környezeti változóból, fallback értékkel
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
-
-// További SEO beállítások
-export const metadata: Metadata = {
-  title: "Autóbérlés egyszerűen Kőszegen | Molnár Autóbérlés",
-  description:
-    "Kedvező áron bérelhet megbízható autókat Kőszegen és környékén. Napi, heti és hosszútávú bérlés rugalmas feltételekkel a Molnár Autóbérlésnél.",
-  alternates: {
-    canonical: siteUrl,
-  },
-  keywords: [
-    "autóbérlés",
-    "Kőszeg",
-    "bérlés",
-    "autókölcsönzés",
-    "olcsó autóbérlés",
-    "megbízható autó",
-    "Molnár Autóbérlés",
-    "hosszú távú autóbérlés",
-    "autókölcsönző",
-    "autóbérlés Vas megye",
-    "hétvégi autóbérlés"
-  ],
-};
+export const metadata: Metadata = generateMetadata(pageSeo.home);
 
 // Főoldal szerver komponens
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <Navbar />
       <main>
         <HeroSection />
         <AboutSection />
@@ -64,14 +40,10 @@ export default function Home() {
         <ReviewsSection />
         <ContactSection />
       </main>
-      <Footer />
       <SchemaMarkup />
     </div>
   );
 }
-
-// Client komponensek Suspense-el
-import dynamic from "next/dynamic";
 
 // Skeleton komponensek a lazy-loading-hoz
 function CarsSectionSkeleton() {

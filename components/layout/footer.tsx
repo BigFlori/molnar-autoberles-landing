@@ -2,14 +2,16 @@ import { Car, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import { ClientFooterLinks } from "./client-footer-links";
 import { formatPhoneNumber, getFullAddress } from "@/utils/utils";
+import { site } from "@/config/site-config";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+  const phoneNumber = site.company.phone;
   const formattedPhone = formatPhoneNumber(phoneNumber);
-  const email = process.env.NEXT_PUBLIC_INFO_MAIL || "info@molnarautoberles.hu";
+  const email = site.company.email;
   const companyAddress = getFullAddress();
-  const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés";
+  const companyName = site.company.name;
+  const companyShortName = site.company.shortName;
   
   return (
     <footer className="border-t bg-white pt-12 pb-6">
@@ -19,7 +21,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Car className="h-6 w-6 text-blue-600" aria-hidden="true" />
-              <span className="text-lg font-semibold">{companyName}</span>
+              <span className="text-lg font-semibold">{companyShortName}</span>
             </div>
             <p className="text-gray-600 mb-4">
               Minőségi autóbérlési szolgáltatások Kőszegen és környékén már 2024 óta. 
