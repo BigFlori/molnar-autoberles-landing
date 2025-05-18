@@ -1,7 +1,8 @@
+import { site } from "@/config/site-config";
 import React from "react";
 
 export function RentalTermsSchemaMarkup() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
+  const siteUrl = site.url;
   
   // Strukturált adatok a bérlési feltételek oldalhoz
   const schemaData = [
@@ -42,7 +43,7 @@ export function RentalTermsSchemaMarkup() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      "name": process.env.NEXT_PUBLIC_COMPANY_NAME,
+      "name": site.company.name,
       "url": siteUrl
     },
     // Bérlési feltételek speciális adatai
@@ -60,7 +61,7 @@ export function RentalTermsSchemaMarkup() {
         "serviceType": "Autóbérlés",
         "provider": {
           "@type": "Organization",
-          "name": process.env.NEXT_PUBLIC_COMPANY_NAME
+          "name": site.company.name,
         }
       }
     },

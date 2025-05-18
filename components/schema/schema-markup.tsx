@@ -1,47 +1,19 @@
 import React from "react";
-// Eltávolítjuk a client-side cars importot
-// import { cars } from "@/components/sections/client-cars";
-
-// Statikus példa adatok a bemutatható autókról a séma számára
-const sampleCars = [
-  {
-    name: "Opel Astra H Kombi",
-    year: "2010",
-    engine: "1.7 Dízel, 110 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    price: "7000"
-  },
-  {
-    name: "Suzuki Swift GLX",
-    year: "2007",
-    engine: "1.3 benzin, 92 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    price: "6000"
-  },
-  {
-    name: "Ford Focus Kombi",
-    year: "2007",
-    engine: "1.6 diesel, 89 LE",
-    seats: "5 személyes",
-    transmission: "Manuális",
-    price: "6000"
-  }
-];
+import cars from "@/data/cars.json";
+import { site } from "@/config/site-config";
 
 // Strukturált adat a keresőmotoroknak - kibővített verzió
 export function SchemaMarkup() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu";
-  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
-  const email = process.env.NEXT_PUBLIC_INFO_MAIL;
+  const siteUrl = site.url;
+  const phoneNumber = site.company.phone;
+  const email = site.company.email;
 
   // Alap vállalkozási adatok
   const businessData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#organization`,
-    name: process.env.NEXT_PUBLIC_COMPANY_NAME,
+    name: site.company.name,
     image: `${siteUrl}/opengraph-image.png`,
     logo: `${siteUrl}/opengraph-image.png`,
     url: siteUrl,
@@ -64,12 +36,12 @@ export function SchemaMarkup() {
     },
     address: {
       "@type": "PostalAddress",
-      streetAddress: process.env.NEXT_PUBLIC_COMPANY_STREET_ADDRESS,
-      addressLocality: process.env.NEXT_PUBLIC_COMPANY_CITY,
-      postalCode: process.env.NEXT_PUBLIC_COMPANY_POSTAL_CODE,
+      streetAddress: site.company.streetAddress,
+      addressLocality: site.company.city,
+      postalCode: site.company.postalCode,
       addressCountry: {
         "@type": "Country",
-        name: process.env.NEXT_PUBLIC_COMPANY_COUNTRY
+        name: site.company.country
       }
     },
     geo: {
@@ -151,7 +123,7 @@ export function SchemaMarkup() {
       bestRating: "5",
       worstRating: "1"
     },
-    sameAs: [process.env.NEXT_PUBLIC_FACEBOOK_URL],
+    sameAs: [site.social.facebook],
     // Szolgáltatások
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -208,7 +180,7 @@ export function SchemaMarkup() {
   };
 
   // Elérhető autók adatai - statikus példa adatokból
-  const carOffers = sampleCars.map(car => ({
+  const carOffers = cars.map(car => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Car",

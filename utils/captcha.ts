@@ -1,7 +1,9 @@
+import { site } from "@/config/site-config";
+
 export async function getCaptchaToken() {
   return new Promise<string | null>((resolve) => {
     grecaptcha.ready(async () => {
-      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      const siteKey = site.recaptcha.siteKey;
       if (!siteKey) {
         resolve(null);
         return;

@@ -1,3 +1,5 @@
+import { site } from "@/config/site-config";
+
 /**
  * Formázza a magyar telefonszámokat olvashatóbb formátumba
  * Bemenet: +36301234567 vagy 06301234567
@@ -58,10 +60,7 @@ export function formatPhoneNumber(phoneNumber?: string): string {
  * @returns A formázott cím string (pl. "9730 Kőszeg, Várkör 61")
  */
 export function getFullAddress(includeCountry: boolean = false): string {
-  const streetAddress = process.env.NEXT_PUBLIC_COMPANY_STREET_ADDRESS || "";
-  const postalCode = process.env.NEXT_PUBLIC_COMPANY_POSTAL_CODE || "";
-  const city = process.env.NEXT_PUBLIC_COMPANY_CITY || "";
-  const country = process.env.NEXT_PUBLIC_COMPANY_COUNTRY || "";
+  const { streetAddress, postalCode, city, country } = site.company;
 
   // Magyar formátum: "Irányítószám Város, Utca házszám"
   let formattedAddress = "";
@@ -82,17 +81,4 @@ export function getFullAddress(includeCountry: boolean = false): string {
   }
 
   return formattedAddress;
-}
-
-/**
- * Visszaadja a postai címet külön részekre bontva
- * @returns Cím komponensek objektuma
- */
-export function getAddressParts() {
-  return {
-    streetAddress: process.env.NEXT_PUBLIC_COMPANY_STREET_ADDRESS || "",
-    postalCode: process.env.NEXT_PUBLIC_COMPANY_POSTAL_CODE || "",
-    city: process.env.NEXT_PUBLIC_COMPANY_CITY || "",
-    country: process.env.NEXT_PUBLIC_COMPANY_COUNTRY || "",
-  };
 }

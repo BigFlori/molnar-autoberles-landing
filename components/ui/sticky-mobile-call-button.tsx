@@ -4,12 +4,13 @@ import React, { useState, useEffect } from "react";
 import { Phone } from "lucide-react";
 import Link from "next/link";
 import { formatPhoneNumber } from "@/utils/utils";
+import { site } from "@/config/site-config";
 
 export function StickyMobileCallButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isClient, setIsClient] = useState(false);
-  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+36301234567";
+  const phoneNumber = site.company.phone;
   const formattedPhone = formatPhoneNumber(phoneNumber);
 
   // Használjuk a useEffect-et, hogy megbizonyosodjunk róla, kliens oldalon vagyunk

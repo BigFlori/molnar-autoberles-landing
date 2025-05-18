@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white">
-      <Navbar />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
         <div className="container max-w-md text-center space-y-6">
           <div className="space-y-2">
@@ -39,7 +37,6 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
