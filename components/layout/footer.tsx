@@ -72,11 +72,11 @@ export function Footer() {
               <Link href="/berlesi-feltetelek" className="text-sm text-gray-600 hover:text-blue-600">
                 Bérlési feltételek
               </Link>
+              <Link href="/aszf-molnarautoberles.pdf" target="_blank" className="text-sm text-gray-600 hover:text-blue-600">
+                ÁSZF
+              </Link>
               {/* <Link href="/adatkezeles" className="text-sm text-gray-600 hover:text-blue-600">
                 Adatkezelési tájékoztató
-              </Link>
-              <Link href="/aszf" className="text-sm text-gray-600 hover:text-blue-600">
-                ÁSZF
               </Link>
               <Link href="/sutik" className="text-sm text-gray-600 hover:text-blue-600">
                 Süti kezelés

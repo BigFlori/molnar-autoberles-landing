@@ -35,9 +35,6 @@ export function ClientFooterLinks() {
       }} className="block text-gray-600 hover:text-blue-600">
         Kapcsolat
       </Link>
-      <Link href="/berlesi-feltetelek" className="block text-gray-600 hover:text-blue-600">
-        Bérlési feltételek
-      </Link>
     </nav>
   );
 }
