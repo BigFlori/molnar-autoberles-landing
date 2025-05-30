@@ -1,5 +1,5 @@
 export const site = {
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.molnarautoberles.hu",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.autoberleskoszeg.hu",
   company: {
     name: process.env.NEXT_PUBLIC_COMPANY_NAME || "Molnár Autóbérlés Kőszeg",
     shortName: process.env.NEXT_PUBLIC_COMPANY_SHORT_NAME || "Molnár Autóbérlés",
