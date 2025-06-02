@@ -72,6 +72,30 @@
     }
   },
   {
+    "id": 5,
+    "name": "Skoda Fabia",
+    "price": "6.000",
+    "year": "2006",
+    "engine": "1.4 benzin, 68 LE",
+    "seats": "5 személyes",
+    "transmission": "Manuális",
+    "image": "skoda_fabia.png",
+    "features": ["alacsony fogyasztás", "klíma", "centrálzár", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "7.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.000",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
     "id": 4,
     "name": "Suzuki Swift",
     "price": "6.500",
