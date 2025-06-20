@@ -24,6 +24,54 @@
     }
   },
   {
+    "id": 6,
+    "name": "Renault Espace 7 személyes",
+    "price": "8.000",
+    "year": "2008",
+    "engine": "2.0 dízel",
+    "seats": "7 személyes",
+    "transmission": "Manuális",
+    "image": "renault_espace.webp",
+    "features": ["klíma", "centrálzár", "tempomat", "óriási tetőablak", "igény esetén tetőbox", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "9.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "8.000",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Ford Fiesta",
+    "price": "6.500",
+    "year": "2008",
+    "engine": "1.25 benzin",
+    "seats": "5 személyes",
+    "transmission": "Manuális",
+    "image": "ford_fiesta.webp",
+    "features": ["klíma", "centrálzár", "alacsony fogyasztás", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "7.500",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.500",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
     "id": 2,
     "name": "Suzuki Swift GLX",
     "price": "6.500",
