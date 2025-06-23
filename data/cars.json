@@ -26,7 +26,7 @@
   {
     "id": 6,
     "name": "Renault Espace 7 személyes",
-    "price": "8.000",
+    "price": "9.500",
     "year": "2008",
     "engine": "2.0 dízel",
     "seats": "7 személyes",
@@ -35,11 +35,11 @@
     "features": ["klíma", "centrálzár", "tempomat", "óriási tetőablak", "igény esetén tetőbox", "évszaknak megfelelő gumik"],
     "pricing": {
       "daily": {
-        "price": "9.000",
+        "price": "11.000",
         "limit": "300km"
       },
       "threeDays": {
-        "price": "8.000",
+        "price": "9.500",
         "limit": "200km"
       },
       "sevenDays": "egyedi ár",
@@ -59,7 +59,7 @@
     "features": ["klíma", "centrálzár", "alacsony fogyasztás", "évszaknak megfelelő gumik"],
     "pricing": {
       "daily": {
-        "price": "7.500",
+        "price": "7.000",
         "limit": "300km"
       },
       "threeDays": {
