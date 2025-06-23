@@ -28,7 +28,7 @@
     "name": "Renault Espace 7 személyes",
     "price": "9.500",
     "year": "2008",
-    "engine": "2.0 dízel",
+    "engine": "2.0 dízel, 175 LE",
     "seats": "7 személyes",
     "transmission": "Manuális",
     "image": "renault_espace.webp",
@@ -45,6 +45,30 @@
       "sevenDays": "egyedi ár",
       "domesticDeposit": "20.000",
       "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Renault Trafic",
+    "price": "23.500",
+    "year": "2018",
+    "engine": "1.6 dízel, 145 LE",
+    "seats": "8 személyes",
+    "transmission": "Manuális",
+    "image": "renault_trafic.webp",
+    "features": ["klíma", "tempomat", "centrálzár", "komfort kivitel (extra kényelem)", "long edition (hosszított csomagtér)"],
+    "pricing": {
+      "daily": {
+        "price": "25.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "23.500",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "80.000",
+      "abroadDeposit": "80.000"
     }
   },
   {
