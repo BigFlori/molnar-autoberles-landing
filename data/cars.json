@@ -26,13 +26,20 @@
   {
     "id": 6,
     "name": "Renault Espace 7 személyes",
-    "price": "11.500",
+    "price": "12.500",
     "year": "2008",
     "engine": "2.0 dízel, 175 LE",
     "seats": "7 személyes",
     "transmission": "Manuális",
     "image": "renault_espace.webp",
-    "features": ["klíma", "centrálzár", "tempomat", "óriási tetőablak", "igény esetén tetőbox", "évszaknak megfelelő gumik"],
+    "features": [
+      "klíma",
+      "centrálzár",
+      "tempomat",
+      "óriási tetőablak",
+      "igény esetén tetőbox",
+      "évszaknak megfelelő gumik"
+    ],
     "pricing": {
       "daily": {
         "price": "13.500",
@@ -56,7 +63,13 @@
     "seats": "8 személyes",
     "transmission": "Manuális",
     "image": "renault_trafic.webp",
-    "features": ["klíma", "tempomat", "centrálzár", "komfort kivitel (extra kényelem)", "long edition (hosszított csomagtér)"],
+    "features": [
+      "klíma",
+      "tempomat",
+      "centrálzár",
+      "komfort kivitel (extra kényelem)",
+      "long edition (hosszított csomagtér)"
+    ],
     "pricing": {
       "daily": {
         "price": "25.000",
@@ -184,6 +197,78 @@
       },
       "threeDays": {
         "price": "6.500",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Opel Astra G Sedan",
+    "price": "6.500",
+    "year": "2002",
+    "engine": "1.6 benzin, 101 LE",
+    "seats": "5 személyes",
+    "transmission": "Manuális (5 sebességes)",
+    "image": "opel_astra_g_sedan.jpeg",
+    "features": ["alacsony fogyasztás", "klíma", "centrálzár", "évszaknak megfelelő gumik"],
+    "pricing": {
+      "daily": {
+        "price": "7.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.500",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Ford Focus Kombi",
+    "price": "6.500",
+    "year": "2000",
+    "engine": "1.4 benzin",
+    "seats": "5 személyes",
+    "transmission": "Manuális (5 sebességes)",
+    "image": "ford_focus_kombi_2000.jpeg",
+    "features": ["centrálzár"],
+    "pricing": {
+      "daily": {
+        "price": "7.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "6.500",
+        "limit": "200km"
+      },
+      "sevenDays": "egyedi ár",
+      "domesticDeposit": "20.000",
+      "abroadDeposit": "30.000"
+    }
+  },
+  {
+    "id": 11,
+    "name": "VW Touran",
+    "price": "8.000",
+    "year": "2005",
+    "engine": "1.9 dízel",
+    "seats": "5 személyes",
+    "transmission": "Manuális (6 sebességes)",
+    "image": "vw_touran_2005.jpeg",
+    "features": ["klíma", "centrálzár", "tempomat"],
+    "pricing": {
+      "daily": {
+        "price": "9.000",
+        "limit": "300km"
+      },
+      "threeDays": {
+        "price": "8.000",
         "limit": "200km"
       },
       "sevenDays": "egyedi ár",
