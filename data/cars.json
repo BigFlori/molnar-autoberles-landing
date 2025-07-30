@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Opel Astra H Kombi",
-    "price": "7.000",
+    "price": "8.000",
     "year": "2010",
     "engine": "1.7 Dízel, 110 LE",
     "seats": "5 személyes",
@@ -15,7 +15,7 @@
         "limit": "300km"
       },
       "threeDays": {
-        "price": "7.000",
+        "price": "7.500",
         "limit": "200km"
       },
       "sevenDays": "egyedi ár",
@@ -39,7 +39,7 @@
         "limit": "300km"
       },
       "threeDays": {
-        "price": "11.500",
+        "price": "12.500",
         "limit": "200km"
       },
       "sevenDays": "egyedi ár",
