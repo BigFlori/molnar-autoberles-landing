@@ -9,6 +9,7 @@ import { layoutMetadata } from "@/config/seo-config";
 import { site } from "@/config/site-config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import GTM from "@/components/layout/gtm";
 
 // Optimalizált fontbetöltés
 const inter = Inter({
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="hu" className={inter.variable}>
       <body className={inter.className}>
         <Analytics />
+        <GTM />
         <Script src={`https://www.google.com/recaptcha/api.js?render=${site.recaptcha.siteKey}`} strategy="beforeInteractive" />
         <Navbar />
         {children}
