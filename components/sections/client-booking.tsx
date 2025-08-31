@@ -17,6 +17,7 @@ import { sendEmail } from "@/actions/send-email";
 import { useCarSelection } from "@/provider/car-provider";
 import { cars } from "./client-cars";
 import { getCaptchaToken } from "@/utils/captcha";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 // Form validációs séma
 const formSchema = z.object({
@@ -107,6 +108,10 @@ export function ClientBooking() {
       if (result.success) {
         toast.success("Foglalási kérelmét sikeresen elküldtük!");
         form.reset();
+        sendGTMEvent({
+          event: "booking_request",
+          data: formattedData
+        });
         setSelectedCar("");
       } else {
         console.error("Hiba az email küldésekor:", result.error, result.details);
