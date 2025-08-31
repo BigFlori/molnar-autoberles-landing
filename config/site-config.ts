@@ -23,4 +23,9 @@ export const site = {
   recaptcha: {
     siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
   },
+  thirdParties: {
+    googleTagManager: {
+      id: process.env.NEXT_PUBLIC_GTM_ID || "NOT-PROVIDED",
+    },
+  },
 };
