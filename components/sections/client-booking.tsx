@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -39,6 +40,7 @@ export function ClientBooking() {
   // A Context-ből származó értékek
   const { selectedCar, setSelectedCar } = useCarSelection();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -113,6 +115,7 @@ export function ClientBooking() {
           data: formattedData
         });
         setSelectedCar("");
+        router.push("/koszonjuk");
       } else {
         console.error("Hiba az email küldésekor:", result.error, result.details);
         

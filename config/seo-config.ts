@@ -63,6 +63,11 @@ export const pageSeo = {
       "kilométer korlátozás"
     ],
     path: "/berlesi-feltetelek"
+  },
+  thankYou: {
+    title: "Köszönjük a foglalását | Molnár Autóbérlés Kőszeg",
+    description: "Foglalási kérelmét megkaptuk. Hamarosan felvesszük Önnel a kapcsolatot a részletek egyeztetéséhez.",
+    path: "/koszonjuk"
   }
 };
 
