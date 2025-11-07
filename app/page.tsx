@@ -21,9 +21,6 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <main>
         <HeroSection />
-        <AboutSection />
-        {/* Bérlési folyamat szekció */}
-        <RentalProcessSection />
         {/* Wrap the car-related sections with CarProvider */}
         <CarProvider>
           <Suspense fallback={<CarsSectionSkeleton />}>
@@ -33,6 +30,9 @@ export default function Home() {
             <ClientBooking />
           </Suspense>
         </CarProvider>
+        <RentalProcessSection />
+        <AboutSection />
+        {/* Bérlési folyamat szekció */}
         {/* GYIK szekció */}
         <FAQSection />
         {/* Kőszeg és környéke szekció - lejjebb helyezve */}

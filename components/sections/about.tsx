@@ -6,7 +6,8 @@ const features = [
   {
     icon: Clock,
     title: "Rugalmas bérlés",
-    description: "Napi, heti vagy akár hosszabb távú bérlési lehetőségek az Ön igényeire szabva. Rugalmas átvételi és leadási időpontok.",
+    description:
+      "Napi, heti vagy akár hosszabb távú bérlési lehetőségek az Ön igényeire szabva. Rugalmas átvételi és leadási időpontok.",
   },
   {
     icon: Shield,
@@ -17,7 +18,8 @@ const features = [
   {
     icon: MapPin,
     title: "Kényelmes elhelyezkedés",
-    description: "Kőszeg belvárosában, könnyen megközelíthető helyen várjuk. Igény esetén házhozszállítási lehetőség Kőszeg 30 km-es körzetében.",
+    description:
+      "Kőszeg belvárosában, könnyen megközelíthető helyen várjuk. Igény esetén házhozszállítási lehetőség Kőszeg 30 km-es körzetében.",
   },
   {
     icon: Wrench,
@@ -28,12 +30,14 @@ const features = [
   {
     icon: Star,
     title: "Személyes kiszolgálás",
-    description: "Családi vállalkozásként kiemelten fontos számunkra minden ügyfelünk elégedettsége. Személyre szabott tanácsokkal segítünk a megfelelő autó kiválasztásában.",
+    description:
+      "Családi vállalkozásként kiemelten fontos számunkra minden ügyfelünk elégedettsége. Személyre szabott tanácsokkal segítünk a megfelelő autó kiválasztásában.",
   },
   {
     icon: Users,
     title: "Teljes körű tájékoztatás",
-    description: "Minden részletet elmagyarázunk, legyen szó az autó kezeléséről vagy a bérlés feltételeiről. Nincsenek rejtett költségek vagy meglepetések.",
+    description:
+      "Minden részletet elmagyarázunk, legyen szó az autó kezeléséről vagy a bérlés feltételeiről. Nincsenek rejtett költségek vagy meglepetések.",
   },
 ];
 
@@ -44,7 +48,7 @@ export function AboutSection() {
         <h2 id="about-heading" className="text-3xl font-bold text-center text-gray-900 mb-8">
           Miért válasszon minket?
         </h2>
-        
+
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature) => (
             <Card key={feature.title} className="border-0 shadow-md hover:shadow-lg transition-shadow">
@@ -58,33 +62,19 @@ export function AboutSection() {
             </Card>
           ))}
         </div>
-        
+
         <div className="max-w-3xl mx-auto">
-          <div className="mb-10">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Rólunk</h3>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                A Molnár Autóbérlés 2024 óta áll ügyfelei rendelkezésére Kőszegen és környékén. Családi vállalkozásként indultunk, azzal a céllal, hogy az autóbérlést egyszerűvé és stresszmentessé tegyük mindenki számára.
-              </p>
-              <p>
-                Különös figyelmet fordítunk minden ügyfelünkre, és arra törekszünk, hogy a lehető legjobb szolgáltatást nyújtsuk. Autóinkat rendszeresen szervizeljük és tisztítjuk, hogy Ön mindig megbízható és tiszta járművet kapjon.
-              </p>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Filozófiánk</h3>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                Hisszük, hogy az autóbérlésnek nem kell bonyolultnak lennie. Átlátható árazást, világos feltételeket és barátságos kiszolgálást biztosítunk. Célunk, hogy ügyfeleink szabadon felfedezhessék Kőszeg és a környék csodálatos látványosságait anélkül, hogy az utazás technikai részletei miatt kellene aggódniuk.
-              </p>
-              <p>
-                Vállalkozásunk szlogenje: "Egyszerű, megbízható, barátságos." Ez a három szó tökéletesen kifejezi azt, amit kínálunk: egyszerű bérlési folyamatot, megbízható járműveket és barátságos kiszolgálást.
-              </p>
-              <p>
-                Legyen szó üzleti útról, családi kirándulásról vagy a saját autó javítás alatti helyettesítéséről, a Molnár Autóbérlés minden esetben a tökéletes megoldást kínálja Önnek.
-              </p>
-            </div>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Rólunk</h3>
+          <div className="space-y-4 text-gray-600">
+            <p>
+              A Molnár Autóbérlés 2024 óta áll ügyfelei rendelkezésére Kőszegen és környékén. Családi vállalkozásként
+              indultunk, azzal a céllal, hogy az autóbérlést egyszerűvé és stresszmentessé tegyük mindenki számára.
+            </p>
+            <p>
+              Különös figyelmet fordítunk minden ügyfelünkre, és arra törekszünk, hogy a lehető legjobb szolgáltatást
+              nyújtsuk. Autóinkat rendszeresen szervizeljük és tisztítjuk, hogy Ön mindig megbízható és tiszta járművet
+              kapjon.
+            </p>
           </div>
         </div>
       </div>
