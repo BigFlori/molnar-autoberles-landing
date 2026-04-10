@@ -18,7 +18,7 @@ export const metadata: Metadata = generateMetadata(pageSeo.home);
 // Főoldal szerver komponens
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-background">
       <main>
         <HeroSection />
         {/* Wrap the car-related sections with CarProvider */}
@@ -48,12 +48,16 @@ export default function Home() {
 // Skeleton komponensek a lazy-loading-hoz
 function CarsSectionSkeleton() {
   return (
-    <section className="py-20">
+    <section className="py-24 bg-slate-50">
       <div className="container px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Elérhető autóink</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="text-center mb-12">
+          <div className="h-4 w-24 bg-slate-200 rounded-full mx-auto mb-3 animate-pulse" />
+          <div className="h-8 w-64 bg-slate-200 rounded-xl mx-auto mb-4 animate-pulse" />
+          <div className="h-4 w-80 bg-slate-200 rounded-full mx-auto animate-pulse" />
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+            <div key={i} className="h-96 bg-slate-200 rounded-2xl animate-pulse" />
           ))}
         </div>
       </div>
@@ -63,10 +67,14 @@ function CarsSectionSkeleton() {
 
 function BookingSectionSkeleton() {
   return (
-    <section className="py-20">
+    <section className="py-24 bg-white">
       <div className="container px-4">
         <div className="max-w-2xl mx-auto">
-          <div className="h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+          <div className="text-center mb-10">
+            <div className="h-4 w-32 bg-slate-200 rounded-full mx-auto mb-3 animate-pulse" />
+            <div className="h-8 w-48 bg-slate-200 rounded-xl mx-auto mb-4 animate-pulse" />
+          </div>
+          <div className="h-96 bg-slate-200 rounded-2xl animate-pulse" />
         </div>
       </div>
     </section>

@@ -6,12 +6,12 @@ import { Separator } from "@/components/ui/separator";
 
 export default function RentalTermsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-sky-50 to-white">
       <main className="flex-1 py-12">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center gap-2 mb-2">
-              <Link href="/" className="text-blue-600 hover:underline text-sm flex items-center">
+              <Link href="/" className="text-sky-700 hover:underline text-sm flex items-center">
                 <ChevronLeft className="h-4 w-4" />
                 Vissza a főoldalra
               </Link>
@@ -40,7 +40,7 @@ export default function RentalTermsPage() {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Bérlési folyamat</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4" id="foglalas">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">1</div>
+                  <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shrink-0 mt-1">1</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Foglalás</h3>
                     <p className="text-gray-600">
@@ -50,7 +50,7 @@ export default function RentalTermsPage() {
                 </div>
                 
                 <div className="flex items-start gap-4" id="dokumentumok">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">2</div>
+                  <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shrink-0 mt-1">2</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Dokumentumok</h3>
                     <p className="text-gray-600">
@@ -60,7 +60,7 @@ export default function RentalTermsPage() {
                 </div>
                 
                 <div className="flex items-start gap-4" id="fizetes">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">3</div>
+                  <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shrink-0 mt-1">3</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Szerződés és fizetés</h3>
                     <p className="text-gray-600">
@@ -70,7 +70,7 @@ export default function RentalTermsPage() {
                 </div>
                 
                 <div className="flex items-start gap-4" id="atvetel">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">4</div>
+                  <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shrink-0 mt-1">4</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Átvétel</h3>
                     <p className="text-gray-600">
@@ -80,7 +80,7 @@ export default function RentalTermsPage() {
                 </div>
                 
                 <div className="flex items-start gap-4" id="hasznalat">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">5</div>
+                  <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shrink-0 mt-1">5</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Használat</h3>
                     <p className="text-gray-600">
@@ -90,7 +90,7 @@ export default function RentalTermsPage() {
                 </div>
                 
                 <div className="flex items-start gap-4" id="visszaadas">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-1">6</div>
+                  <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center shrink-0 mt-1">6</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Visszaadás</h3>
                     <p className="text-gray-600">
@@ -165,7 +165,7 @@ export default function RentalTermsPage() {
                 Válassza ki a megfelelő autót és foglalja le egyszerűen, gyorsan. Kérdése van? Vegye fel velünk a kapcsolatot telefonon vagy e-mailben!
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                <Button asChild className="bg-sky-700 hover:bg-sky-800">
                   <Link href="/#booking">
                     Foglalás
                   </Link>

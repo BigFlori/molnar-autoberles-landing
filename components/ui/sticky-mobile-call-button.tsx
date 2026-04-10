@@ -76,7 +76,7 @@ export function StickyMobileCallButton() {
     >
       <Link
         href={`tel:${phoneNumber}`}
-        className="flex items-center justify-center gap-2 bg-blue-600 text-white py-3 w-full shadow-lg font-medium"
+        className="flex items-center justify-center gap-2 bg-sky-700 text-white py-3 w-full shadow-lg font-medium"
       >
         <Phone className="h-5 w-5" />
         <span>Hívás most: {formattedPhone}</span>
