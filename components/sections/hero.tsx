@@ -22,11 +22,11 @@ function RotatingWord() {
   }, [])
 
   return (
-    <span className="inline-block overflow-hidden h-[1.15em] align-bottom">
+    <span className="inline-block overflow-hidden h-[1.35em] align-bottom">
       <AnimatePresence mode="wait">
         <motion.span
           key={rotatingWords[index]}
-          className="block text-sky-500"
+          className="block text-sky-400"
           initial={{ y: -52, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: 52, opacity: 0, filter: "blur(4px)" }}
@@ -47,7 +47,7 @@ const stats = [
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Photo */}
       <div className="absolute inset-0">
         <Image
@@ -59,7 +59,7 @@ export function HeroSection() {
           className="object-cover"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/92 via-slate-900/75 to-slate-800/55" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Dot Pattern overlay */}
@@ -75,16 +75,6 @@ export function HeroSection() {
       {/* Content */}
       <div className="container px-4 relative z-20 py-20">
         <div className="max-w-2xl">
-          {/* Badge */}
-          <BlurFade delay={0} duration={0.5}>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5 mb-7">
-              <span className="text-amber-400 text-sm">★</span>
-              <span className="text-white/85 text-sm font-medium tracking-wide">
-                Megbízható · Megfizethető · Rugalmas
-              </span>
-            </div>
-          </BlurFade>
-
           {/* Heading */}
           <BlurFade delay={0.1} duration={0.5}>
             <h1 className="font-poppins font-bold text-white leading-tight mb-6"
@@ -92,13 +82,13 @@ export function HeroSection() {
               Autóbérlés{" "}
               <RotatingWord />
               <br />
-              <span className="text-slate-300">Kőszegen</span>
+              <span className="text-white/80">Kőszegen</span>
             </h1>
           </BlurFade>
 
           {/* Subtitle */}
           <BlurFade delay={0.2} duration={0.5}>
-            <p className="text-lg text-slate-300 mb-10 max-w-lg leading-relaxed">
+            <p className="text-lg text-white/75 mb-10 max-w-lg leading-relaxed">
               Megbízható autók, rugalmas feltételek, személyes kiszolgálás.
               Fedezze fel Kőszeget és környékét a mi autóinkkal!
             </p>
@@ -127,7 +117,7 @@ export function HeroSection() {
                   e.preventDefault()
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                 }}
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-white/25 text-white text-sm font-semibold hover:bg-white/10 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-white/40 bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition-all duration-200"
               >
                 <Phone className="h-4 w-4" />
                 Kapcsolatfelvétel
@@ -141,10 +131,10 @@ export function HeroSection() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="flex flex-col bg-white/[0.08] backdrop-blur-sm rounded-xl px-5 py-3.5 border border-white/[0.12]"
+                  className="flex flex-col bg-white/[0.12] backdrop-blur-sm rounded-xl px-5 py-3.5 border border-white/20"
                 >
                   <span className="text-xl font-bold text-white font-poppins">{stat.value}</span>
-                  <span className="text-xs text-slate-400 mt-0.5">{stat.label}</span>
+                  <span className="text-xs text-white/60 mt-0.5">{stat.label}</span>
                 </div>
               ))}
             </div>
