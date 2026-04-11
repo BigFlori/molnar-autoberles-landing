@@ -16,10 +16,10 @@ import { usePathname, useRouter } from "next/navigation"
 import { site } from "@/config/site-config"
 
 const navItems = [
-  { href: "#about", label: "Rólunk" },
-  { href: "#rental-process", label: "Bérlési folyamat" },
   { href: "#cars", label: "Autóink" },
   { href: "#booking", label: "Foglalás" },
+  { href: "#rental-process", label: "Bérlési folyamat" },
+  { href: "#about", label: "Rólunk" },
   { href: "#faq", label: "GYIK" },
   { href: "#koszeg", label: "Látnivalók" },
   { href: "#contact", label: "Kapcsolat" },

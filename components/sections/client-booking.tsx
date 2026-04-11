@@ -45,6 +45,7 @@ const checklistItems = [
   "Vezetői engedély",
   "Lakcímkártya",
   "Kaució összege (készpénz)",
+  "Teljes bérleti díj összege",
 ];
 
 export function ClientBooking() {
@@ -202,7 +203,7 @@ export function ClientBooking() {
                 <CardHeader className="sr-only">
                   <CardTitle>Foglalási űrlap</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-6">
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-5">
                       <div className="grid sm:grid-cols-2 gap-4">

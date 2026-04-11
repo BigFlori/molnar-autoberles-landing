@@ -95,7 +95,7 @@ export function RentalProcessSection() {
 
         {/* CTA */}
         <BlurFade inView delay={0.45} duration={0.5}>
-          <div className="text-center mt-12">
+          <div className="flex flex-col items-center mt-12">
             <p className="text-slate-500 mb-6 max-w-xl mx-auto text-sm leading-relaxed">
               A bérlés részletes feltételeiről, a fizetési módokról, a biztosításról és egyéb
               tudnivalókról a Bérlési feltételek oldalunkon tájékozódhat.

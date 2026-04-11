@@ -4,7 +4,7 @@ import { site } from "@/config/site-config";
 
 export function ClientContactMap() {
   return (
-    <div className="w-full h-64 rounded-lg overflow-hidden border mt-8">
+    <div className="w-full h-64 rounded-lg overflow-hidden border">
       <iframe
         src={site.maps.embedUrl}
         width="100%"

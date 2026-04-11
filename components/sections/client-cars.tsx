@@ -136,7 +136,7 @@ export function ClientCars() {
                       document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
-                    Ezt bérlem
+                    Kiválasztom
                   </ShimmerButton>
                 </div>
               </div>
