@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-sky-50 to-white">
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
         <div className="container max-w-md text-center space-y-6">
           <div className="space-y-2">
-            <h1 className="text-9xl font-bold text-blue-600">404</h1>
+            <h1 className="text-9xl font-bold text-sky-700">404</h1>
             <h2 className="text-3xl font-semibold text-gray-900">Oldal nem található</h2>
             <p className="text-muted-foreground">
               Az általad keresett oldal nem létezik vagy eltávolításra került.

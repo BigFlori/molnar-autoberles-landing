@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__magicuidesign-mcp__listRegistryItems",
+      "Read(//c/Users/Thurneer/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.5.0/.claude/skills/ui-ux-pro-max/**)",
+      "Bash(python scripts/search.py \"local car rental family business friendly trustworthy service\" --design-system -p \"Molnar Autoberles\" -f markdown)",
+      "Bash(python scripts/search.py \"local service business landing page hero cta\" --domain landing -n 5 -f markdown)",
+      "Bash(python scripts/search.py \"friendly approachable modern clean\" --domain style -n 5 -f markdown)",
+      "mcp__magicuidesign-mcp__getRegistryItem",
+      "Bash(npx tsc:*)",
+      "Bash(npx next:*)"
+    ]
+  }
+}

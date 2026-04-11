@@ -9,7 +9,7 @@ export const metadata: Metadata = generateMetadata(pageSeo.thankYou);
 
 export default function ThankYouPage() {
   return (
-    <div className="min-h-[60vh] bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-[60vh] bg-gradient-to-b from-sky-50 to-white">
       <section className="py-20">
         <div className="container px-4">
           <div className="max-w-2xl mx-auto">
@@ -24,13 +24,13 @@ export default function ThankYouPage() {
                 <div className="space-y-2 text-gray-700">
                   <p>
                     Kérdés esetén keressen minket telefonon: {" "}
-                    <Link href={`tel:${site.company.phone}`} className="text-blue-600 hover:underline">
+                    <Link href={`tel:${site.company.phone}`} className="text-sky-700 hover:underline">
                       {site.company.phone}
                     </Link>
                   </p>
                   <p>
                     vagy emailben: {" "}
-                    <Link href={`mailto:${site.company.email}`} className="text-blue-600 hover:underline">
+                    <Link href={`mailto:${site.company.email}`} className="text-sky-700 hover:underline">
                       {site.company.email}
                     </Link>
                   </p>

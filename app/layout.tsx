@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 import { StickyMobileCallButton } from "@/components/ui/sticky-mobile-call-button";
 import Script from "next/script";
@@ -9,6 +9,7 @@ import { layoutMetadata } from "@/config/seo-config";
 import { site } from "@/config/site-config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { CookieBanner } from "@/components/layout/cookie-banner";
 import { GoogleTagManager } from '@next/third-parties/google'
 
 // Optimalizált fontbetöltés
@@ -19,11 +20,18 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const poppins = Poppins({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
+});
+
 export const metadata: Metadata = layoutMetadata;
 
 // Viewport beállítások
 export const viewport: Viewport = {
-  themeColor: "#3b82f6",
+  themeColor: "#0284c7",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -31,7 +39,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hu" className={inter.variable}>
+    <html lang="hu" className={`${inter.variable} ${poppins.variable}`}>
       <body className={inter.className}>
         <Analytics />
         <GoogleTagManager gtmId={site.thirdParties.googleTagManager.id} />
@@ -40,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <StickyMobileCallButton />
         <Toaster position="top-center" />
+        <CookieBanner />
         <Footer />
       </body>
     </html>
