@@ -1,185 +1,182 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useCallback } from "react";
-import { Car, Phone, Menu } from "lucide-react";
-import { useActiveSection } from "@/hooks/use-active-section";
-import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import Link from "next/link";
-import { formatPhoneNumber } from "@/utils/utils";
-import { usePathname, useRouter } from "next/navigation"; // Új importok
-import { site } from "@/config/site-config";
+import { useState, useEffect, useCallback } from "react"
+import { Car, Phone, Menu } from "lucide-react"
+import { useActiveSection } from "@/hooks/use-active-section"
+import { cn } from "@/lib/utils"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet"
+import Link from "next/link"
+import { formatPhoneNumber } from "@/utils/utils"
+import { usePathname, useRouter } from "next/navigation"
+import { site } from "@/config/site-config"
 
 const navItems = [
-  { href: "#about", label: "Rólunk" },
-  { href: "#rental-process", label: "Bérlési folyamat" },
   { href: "#cars", label: "Autóink" },
   { href: "#booking", label: "Foglalás" },
+  { href: "#rental-process", label: "Bérlési folyamat" },
+  { href: "#about", label: "Rólunk" },
   { href: "#faq", label: "GYIK" },
   { href: "#koszeg", label: "Látnivalók" },
   { href: "#contact", label: "Kapcsolat" },
-];
+]
 
 export function Navbar() {
-  const activeSection = useActiveSection();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [manualActive, setManualActive] = useState<string | null>(null);
-  const phoneNumber = site.company.phone;
-  const formattedPhone = formatPhoneNumber(phoneNumber);
-  
-  // Új: usePathname és useRouter hook-ok használata
-  const pathname = usePathname();
-  const router = useRouter();
-  const isHomePage = pathname === "/";
+  const activeSection = useActiveSection()
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [manualActive, setManualActive] = useState<string | null>(null)
+  const phoneNumber = site.company.phone
+  const formattedPhone = formatPhoneNumber(phoneNumber)
 
-  // Scroll figyelése
+  const pathname = usePathname()
+  const router = useRouter()
+  const isHomePage = pathname === "/"
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
+    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-    window.addEventListener("scroll", handleScroll);
-    
-    // Kezdeti érték beállítása
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault()
+      const href = e.currentTarget.getAttribute("href")
+      if (!href) return
 
-  // Módosított navigációs kezelő
-  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const href = e.currentTarget.getAttribute("href");
-    
-    if (!href) return;
-    
-    if (isHomePage) {
-      // Főoldalon vagyunk - egyszerű görgetés
-      const targetId = href.slice(1);
-      setManualActive(targetId);
-      
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-      
-      setTimeout(() => {
-        setManualActive(null);
-      }, 1000);
-    } else {
-      // Nem a főoldalon vagyunk - navigáljunk a főoldalra, megjelölve a célszekciót
-      router.push(`/${href}`);
-    }
-    
-    // Mobilmenü bezárása
-    setIsOpen(false);
-  }, [isHomePage, router]);
+      if (isHomePage) {
+        const targetId = href.slice(1)
+        setManualActive(targetId)
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+        setTimeout(() => setManualActive(null), 1000)
+      } else {
+        router.push(`/${href}`)
+      }
+      setIsOpen(false)
+    },
+    [isHomePage, router]
+  )
 
-  // A végső aktív szekció: vagy a manuálisan beállított vagy a hook által meghatározott
-  const finalActiveSection = manualActive || activeSection;
+  const finalActiveSection = manualActive || activeSection
 
   return (
-    <header 
+    <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled 
-          ? "bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200/50" 
-          : "bg-white border-b"
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/70"
+          : "bg-white border-b border-slate-100"
       )}
     >
       <div className="container flex h-16 items-center px-4">
-        <Link 
-          href="/" 
-          className="flex items-center gap-1.5 md:gap-2" 
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-2 flex-shrink-0"
           onClick={(e) => {
             if (isHomePage) {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: "smooth" })
             }
-            // Más oldalon nem kell preventDefault, egyszerűen a főoldalra navigálunk
           }}
         >
-          <Car className="h-5 w-5 md:h-6 md:w-6 text-blue-600" aria-hidden="true" />
-          <h2 className="text-base md:text-xl font-bold text-gray-900">{site.company.shortName}</h2>
+          <div className="w-8 h-8 rounded-lg bg-sky-700 flex items-center justify-center">
+            <Car className="h-4 w-4 text-white" aria-hidden="true" />
+          </div>
+          <span className="font-poppins text-base md:text-lg font-semibold text-slate-900">
+            {site.company.shortName}
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center flex-1 gap-4 xl:gap-6 ml-6">
+        <nav className="hidden md:flex items-center justify-center flex-1 gap-1 mx-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={handleClick}
               className={cn(
-                "text-sm font-medium transition-colors relative py-1",
+                "text-sm font-medium transition-colors relative px-3 py-2 rounded-lg",
                 isHomePage && finalActiveSection === item.href.slice(1)
-                  ? "text-blue-600"
-                  : "text-gray-600 hover:text-blue-600"
+                  ? "text-sky-700 bg-sky-50"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               )}
             >
               {item.label}
-              {isHomePage && finalActiveSection === item.href.slice(1) && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 rounded-full" />
-              )}
             </Link>
           ))}
         </nav>
 
-        {/* Desktop Phone */}
-        <Link 
+        {/* Desktop Phone Button */}
+        <Link
           href={`tel:${phoneNumber}`}
-          className="hidden md:flex items-center gap-2 text-blue-600 hover:text-blue-700"
+          className="hidden md:flex items-center gap-2 text-sm font-semibold text-white bg-sky-700 hover:bg-sky-800 transition-colors px-4 py-2 rounded-xl flex-shrink-0"
         >
-          <Phone className="h-5 w-5" aria-hidden="true" />
+          <Phone className="h-4 w-4" aria-hidden="true" />
           <span>{formattedPhone}</span>
         </Link>
 
         {/* Mobile Navigation */}
-        <div className="flex items-center gap-6 ml-auto md:hidden">
-          <Link 
+        <div className="flex items-center gap-3 ml-auto md:hidden">
+          <Link
             href={`tel:${phoneNumber}`}
-            className="text-blue-600 hover:text-blue-700"
+            className="w-9 h-9 rounded-xl bg-sky-700 flex items-center justify-center text-white hover:bg-sky-800 transition-colors"
             aria-label="Telefon"
           >
-            <Phone className="h-5 w-5" aria-hidden="true" />
+            <Phone className="h-4 w-4" aria-hidden="true" />
           </Link>
-          
+
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <button className="text-gray-600 hover:text-gray-900" aria-label="Menü">
-                <Menu className="h-5 w-5" aria-hidden="true" />
+              <button
+                className="w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors"
+                aria-label="Menü megnyitása"
+              >
+                <Menu className="h-4 w-4" aria-hidden="true" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
+            <SheetContent side="right" className="w-[300px] sm:w-[360px] p-0 bg-white">
               <nav className="flex flex-col p-6">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-2">
-                    <Car className="h-6 w-6 text-blue-600" aria-hidden="true" />
-                    <SheetTitle className="text-lg font-semibold">{site.company.shortName}</SheetTitle>
+                <div className="flex items-center gap-2 mb-8">
+                  <div className="w-8 h-8 rounded-lg bg-sky-700 flex items-center justify-center">
+                    <Car className="h-4 w-4 text-white" aria-hidden="true" />
                   </div>
+                  <SheetTitle className="font-poppins text-base font-semibold text-slate-900">
+                    {site.company.shortName}
+                  </SheetTitle>
                 </div>
-                <div className="flex flex-col gap-4">
+
+                <div className="flex flex-col gap-1">
                   {navItems.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={handleClick}
                       className={cn(
-                        "text-lg font-medium transition-colors py-2 border-b border-gray-100",
+                        "text-base font-medium transition-colors py-3 px-3 rounded-lg",
                         isHomePage && finalActiveSection === item.href.slice(1)
-                          ? "text-blue-600"
-                          : "text-gray-600 hover:text-blue-600"
+                          ? "text-sky-700 bg-sky-50"
+                          : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                       )}
                     >
                       {item.label}
                     </Link>
                   ))}
-                  <Link 
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-slate-100">
+                  <Link
                     href={`tel:${phoneNumber}`}
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 py-2 mt-4"
+                    className="flex items-center gap-3 text-white bg-sky-700 hover:bg-sky-800 transition-colors py-3 px-4 rounded-xl font-semibold text-sm w-full justify-center"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Phone className="h-5 w-5" aria-hidden="true" />
+                    <Phone className="h-4 w-4" aria-hidden="true" />
                     <span>{formattedPhone}</span>
                   </Link>
                 </div>
@@ -189,5 +186,5 @@ export function Navbar() {
         </div>
       </div>
     </header>
-  );
+  )
 }

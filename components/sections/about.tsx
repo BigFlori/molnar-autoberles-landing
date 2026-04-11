@@ -1,7 +1,9 @@
-import { Clock, Shield, MapPin, Wrench, Star, Users } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+"use client"
 
-// Server komponens, statikus tartalommal
+import { Clock, Shield, MapPin, Wrench, Star, Users } from "lucide-react"
+import { MagicCard } from "@/components/ui/magic-card"
+import { BlurFade } from "@/components/ui/blur-fade"
+
 const features = [
   {
     icon: Clock,
@@ -39,45 +41,82 @@ const features = [
     description:
       "Minden részletet elmagyarázunk, legyen szó az autó kezeléséről vagy a bérlés feltételeiről. Nincsenek rejtett költségek vagy meglepetések.",
   },
-];
+]
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white" aria-labelledby="about-heading">
+    <section id="about" className="py-24 bg-slate-50" aria-labelledby="about-heading">
       <div className="container px-4">
-        <h2 id="about-heading" className="text-3xl font-bold text-center text-gray-900 mb-8">
-          Miért válasszon minket?
-        </h2>
+        {/* Section header */}
+        <BlurFade inView duration={0.5}>
+          <div className="text-center mb-14">
+            <span className="inline-block text-sky-700 text-sm font-semibold tracking-wider uppercase mb-3">
+              Miért mi?
+            </span>
+            <h2
+              id="about-heading"
+              className="font-poppins text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+            >
+              Miért válasszon minket?
+            </h2>
+            <p className="text-slate-500 text-lg max-w-xl mx-auto leading-relaxed">
+              Kőszeg megbízható autóbérlője vagyunk. Íme néhány ok, amiért ügyfeleink újra és újra visszatérnek.
+            </p>
+          </div>
+        </BlurFade>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
-          {features.map((feature) => (
-            <Card key={feature.title} className="border-0 shadow-md hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <feature.icon className="h-10 w-10 text-blue-600 mb-4" aria-hidden="true" />
-                <CardTitle>{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">{feature.description}</p>
-              </CardContent>
-            </Card>
+        {/* Feature cards grid */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mb-14">
+          {features.map((feature, i) => (
+            <BlurFade key={feature.title} inView delay={i * 0.07} duration={0.5}>
+              <MagicCard
+                className="h-full rounded-2xl border border-slate-200"
+                gradientColor="#e0f2fe"
+                gradientOpacity={0.5}
+                gradientFrom="#0284c7"
+                gradientTo="#7dd3fc"
+                gradientSize={220}
+              >
+                <div className="p-6 h-full">
+                  <div className="w-11 h-11 rounded-xl bg-sky-50 flex items-center justify-center mb-4 group-hover:bg-sky-100 transition-colors duration-200">
+                    <feature.icon
+                      className="h-5 w-5 text-sky-700"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h3 className="font-poppins text-base font-semibold text-slate-900 mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </MagicCard>
+            </BlurFade>
           ))}
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Rólunk</h3>
-          <div className="space-y-4 text-gray-600">
-            <p>
-              A Molnár Autóbérlés 2024 óta áll ügyfelei rendelkezésére Kőszegen és környékén. Családi vállalkozásként
-              indultunk, azzal a céllal, hogy az autóbérlést egyszerűvé és stresszmentessé tegyük mindenki számára.
-            </p>
-            <p>
-              Különös figyelmet fordítunk minden ügyfelünkre, és arra törekszünk, hogy a lehető legjobb szolgáltatást
-              nyújtsuk. Autóinkat rendszeresen szervizeljük és tisztítjuk, hogy Ön mindig megbízható és tiszta járművet
-              kapjon.
-            </p>
+        {/* About text */}
+        <BlurFade inView delay={0.3} duration={0.5}>
+          <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+            <h3 className="font-poppins text-xl font-semibold text-slate-900 mb-4">
+              Rólunk
+            </h3>
+            <div className="space-y-4 text-slate-600 leading-relaxed text-sm md:text-base">
+              <p>
+                A Molnár Autóbérlés 2024 óta áll ügyfelei rendelkezésére Kőszegen és környékén. Családi
+                vállalkozásként indultunk, azzal a céllal, hogy az autóbérlést egyszerűvé és stresszmentessé
+                tegyük mindenki számára.
+              </p>
+              <p>
+                Különös figyelmet fordítunk minden ügyfelünkre, és arra törekszünk, hogy a lehető legjobb
+                szolgáltatást nyújtsuk. Autóinkat rendszeresen szervizeljük és tisztítjuk, hogy Ön mindig
+                megbízható és tiszta járművet kapjon.
+              </p>
+            </div>
           </div>
-        </div>
+        </BlurFade>
       </div>
     </section>
-  );
+  )
 }

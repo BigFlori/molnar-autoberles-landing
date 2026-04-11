@@ -20,6 +20,16 @@ export function StickyMobileCallButton() {
     // Kezdeti ellenőrzés: alapértelmezetten látszik a gomb
     setIsVisible(true);
 
+    // Ellenőrizzük, hogy látható-e a hero szekció
+    const checkHeroVisibility = () => {
+      const hero = document.querySelector("#hero");
+      if (!hero) return false;
+
+      const heroRect = hero.getBoundingClientRect();
+      // A hero látható, ha az alja még a viewport-on belül van
+      return heroRect.bottom > 0;
+    };
+
     // Ellenőrizzük, hogy látható-e a footer
     const checkFooterVisibility = () => {
       const footer = document.querySelector("footer");
@@ -28,7 +38,7 @@ export function StickyMobileCallButton() {
       const footerRect = footer.getBoundingClientRect();
       const footerTop = footerRect.top;
       const windowHeight = window.innerHeight;
-      
+
       // Csak akkor rejtjük el a gombot, ha a footer már látható
       // (azaz a footer felső része már belépett a képernyőbe)
       return footerTop < windowHeight;
@@ -37,19 +47,20 @@ export function StickyMobileCallButton() {
     // Görgetés kezelése
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const isHeroVisible = checkHeroVisibility();
       const isFooterVisible = checkFooterVisibility();
-      
-      // Ha a footer látható, elrejtjük a gombot
-      if (isFooterVisible) {
+
+      // Ha a hero vagy a footer látható, elrejtjük a gombot
+      if (isHeroVisible || isFooterVisible) {
         setIsVisible(false);
       } else {
         // Egyébként megjelenítjük, kivéve ha lefelé görgetünk és nem vagyunk az oldal tetején
         const isScrollingDown = currentScrollY > lastScrollY;
         const isNotAtTop = currentScrollY > 100;
-        
+
         setIsVisible(!(isScrollingDown && isNotAtTop));
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -76,7 +87,7 @@ export function StickyMobileCallButton() {
     >
       <Link
         href={`tel:${phoneNumber}`}
-        className="flex items-center justify-center gap-2 bg-blue-600 text-white py-3 w-full shadow-lg font-medium"
+        className="flex items-center justify-center gap-2 bg-sky-700 text-white py-3 w-full shadow-lg font-medium"
       >
         <Phone className="h-5 w-5" />
         <span>Hívás most: {formattedPhone}</span>
