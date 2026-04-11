@@ -9,6 +9,7 @@ import { layoutMetadata } from "@/config/seo-config";
 import { site } from "@/config/site-config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { CookieBanner } from "@/components/layout/cookie-banner";
 import { GoogleTagManager } from '@next/third-parties/google'
 
 // Optimalizált fontbetöltés
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <StickyMobileCallButton />
         <Toaster position="top-center" />
+        <CookieBanner />
         <Footer />
       </body>
     </html>
