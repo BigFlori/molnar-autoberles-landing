@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   :root {
     /* Slate-based color system — friendly, modern, clean */
     --background: 210 40% 98%;        /* #F8FAFC - slate-50 */

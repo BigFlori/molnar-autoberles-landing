@@ -46,7 +46,18 @@ const defaultSeo = {
 export const pageSeo = {
   home: {
     title: "Molnár Autóbérlés Kőszeg - Kedvező árak, megbízható autók",
-    description: "Autóbérlés Kőszegen és környékén kedvező árakon. Megbízható járművek, rugalmas bérlési feltételek. Napi, heti és hosszútávú bérlés.",
+    description: "Autóbérlés Kőszegen és környékén kedvező árakon. Megbízható járművek, rugalmas bérlési feltételek. Napi, heti és hosszútávú bérlés. Kiszállítás Kőszeg 30 km-es körzetébe.",
+    keywords: [
+      "autóbérlés kőszeg",
+      "kőszeg autóbérlés",
+      "autókölcsönzés kőszeg",
+      "napi autóbérlés",
+      "heti autóbérlés",
+      "hosszú távú autóbérlés kőszeg",
+      "autóbérlés vas megye",
+      "megfizethető autóbérlés",
+      "autóbérlés házhozszállítás",
+    ],
     path: "",
   },
   rentalTerms: {

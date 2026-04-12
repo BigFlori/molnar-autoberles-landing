@@ -54,7 +54,7 @@ export function RentalTermsSchemaMarkup() {
       "text": "Autóbérlési szolgáltatásunk igénybevételéhez szükséges tudnivalók és részletes feltételek.",
       "category": "https://schema.org/BusinessUpdate",
       "datePosted": "2025-01-01",
-      "expires": "2026-01-01",
+      "expires": "2027-01-01",
       "governmentBenefitsInfo": {
         "@type": "GovernmentService",
         "name": "Autóbérlés feltételei",

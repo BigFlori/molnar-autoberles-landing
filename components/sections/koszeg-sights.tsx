@@ -172,9 +172,9 @@ export function KoszegSightsSection() {
                     <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center flex-shrink-0">
                       <category.icon className="h-5 w-5 text-sky-700" aria-hidden="true" />
                     </div>
-                    <p className="font-poppins font-semibold text-slate-900 text-sm">
+                    <h3 className="font-poppins font-semibold text-slate-900 text-sm">
                       {category.title}
-                    </p>
+                    </h3>
                   </div>
 
                   <div className="space-y-4">

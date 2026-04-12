@@ -51,13 +51,12 @@ export function HeroSection() {
       {/* Background Photo */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=1600&q=80"
+          src="/autoberles-koszeg-hero.webp"
           alt="Autóbérlés Kőszegen — Molnár Autóbérlés"
           fill
           priority
           sizes="100vw"
           className="object-cover"
-          quality={90}
         />
         <div className="absolute inset-0 bg-black/60" />
       </div>
@@ -77,10 +76,13 @@ export function HeroSection() {
         <div className="max-w-2xl">
           {/* Heading */}
           <BlurFade delay={0.1} duration={0.5}>
-            <h1 className="font-poppins font-bold text-white leading-tight mb-6"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}>
+            <h1
+              className="font-poppins font-bold text-white leading-tight mb-6"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
+              aria-label="Autóbérlés egyszerűen Kőszegen"
+            >
               Autóbérlés{" "}
-              <RotatingWord />
+              <span aria-hidden="true"><RotatingWord /></span>
               <br />
               <span className="text-white/80">Kőszegen</span>
             </h1>
@@ -97,26 +99,21 @@ export function HeroSection() {
           {/* CTAs */}
           <BlurFade delay={0.3} duration={0.5}>
             <div className="flex flex-wrap gap-4 mb-14">
-              <ShimmerButton
-                background="rgba(3, 105, 161, 1)"
-                shimmerColor="#7dd3fc"
-                shimmerDuration="2.5s"
-                borderRadius="12px"
-                className="px-7 py-3 text-sm font-semibold gap-2"
-                onClick={() =>
-                  document.getElementById("cars")?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                Bérelhető autóink
-                <ArrowRight className="h-4 w-4" />
-              </ShimmerButton>
+              <Link href="#cars">
+                <ShimmerButton
+                  background="rgba(3, 105, 161, 1)"
+                  shimmerColor="#7dd3fc"
+                  shimmerDuration="2.5s"
+                  borderRadius="12px"
+                  className="px-7 py-3 text-sm font-semibold gap-2"
+                >
+                  Bérelhető autóink
+                  <ArrowRight className="h-4 w-4" />
+                </ShimmerButton>
+              </Link>
 
               <Link
                 href="#contact"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                }}
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-white/40 bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition-all duration-200"
               >
                 <Phone className="h-4 w-4" />

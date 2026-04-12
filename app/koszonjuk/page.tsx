@@ -5,7 +5,13 @@ import Link from "next/link";
 import { site } from "@/config/site-config";
 import { generateMetadata, pageSeo } from "@/config/seo-config";
 
-export const metadata: Metadata = generateMetadata(pageSeo.thankYou);
+export const metadata: Metadata = {
+  ...generateMetadata(pageSeo.thankYou),
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ThankYouPage() {
   return (

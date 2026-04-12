@@ -11,7 +11,7 @@ export function SchemaMarkup() {
   // Alap vállalkozási adatok
   const businessData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "CarRental",
     "@id": `${siteUrl}/#organization`,
     name: site.company.name,
     image: `${siteUrl}/opengraph-image.png`,
@@ -98,7 +98,7 @@ export function SchemaMarkup() {
           ratingValue: "5",
           bestRating: "5",
         },
-        reviewBody: "Megbízható autó meg fizethető áron. Mindenkinek merem ajánlani 🤝",
+        reviewBody: "Megbízható autó meg fizethető áron. Mindenkinek merem ajánlani.",
       },
       {
         "@type": "Review",
@@ -112,14 +112,56 @@ export function SchemaMarkup() {
           ratingValue: "5",
           bestRating: "5",
         },
-        reviewBody: "Megbízható-pontos-korrekt‼️",
+        reviewBody: "Megbízható · Pontos · Korrekt! Nagyon elégedett voltam a szolgáltatással.",
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "originalzsebe",
+        },
+        datePublished: "2025-06-11",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        reviewBody: "Remek autót kaptam, gyors és zökkenőmentes volt az ügyintézés. Ajánlom mindenki figyelmébe aki autót szeretne bérelni.",
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Máte Kolonics",
+        },
+        datePublished: "2025-07-11",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        reviewBody: "Nagyon korrekt és igényes autót tudtunk itt bérelni ajánlom őket bárkinek!",
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Ákos Dávid",
+        },
+        datePublished: "2025-07-11",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        reviewBody: "TOP! Gyors, precíz és korrekt. Autók megbízhatók 5*",
       },
     ],
     // Aggregált értékelés
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5",
-      reviewCount: "3",
+      reviewCount: "6",
       bestRating: "5",
       worstRating: "1"
     },
@@ -214,7 +256,7 @@ export function SchemaMarkup() {
           "name": "Milyen dokumentumok szükségesek az autóbérléshez?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A bérléshez az alábbi dokumentumok szükségesek: érvényes személyi igazolvány vagy útlevél, legalább 2 éve érvényes vezetői engedély, lakcímkártya, a bérlés díjának és a kauciónak megfelelő fedezet (készpénz vagy bankkártya)."
+            "text": "A bérléshez az alábbi dokumentumok szükségesek: érvényes személyi igazolvány vagy útlevél, legalább 2 éve érvényes vezetői engedély, lakcímkártya, a bérlés díjának és a kauciónak megfelelő fedezet (készpénz vagy utalás)."
           }
         },
         {
@@ -223,6 +265,14 @@ export function SchemaMarkup() {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "A minimum bérlési idő 24 óra (1 nap). Rövidebb időtartamra is lehetséges bérlés, de ebben az esetben is a napi díj kerül felszámításra."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mi a teendő meghibásodás vagy baleset esetén?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meghibásodás vagy baleset esetén kérjük, azonnal vegye fel velünk a kapcsolatot telefonon. 24 órás ügyfélszolgálatunk segít a probléma megoldásában. A bérleti szerződésben található biztosítási feltételek szerint járunk el."
           }
         },
         {
@@ -239,6 +289,46 @@ export function SchemaMarkup() {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Az autók átvétele és visszaadása Kőszeg belvárosában, irodánkban történik, rugalmas időbeosztás szerint. Előzetes egyeztetés alapján az átvétel és visszaadás Kőszeg 30 km-es körzetében más helyszínen is lehetséges, ennek díja egyedi megállapodás szerint alakul."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kell-e teletankolni az autót leadáskor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Igen, az autókat tele tankkal adjuk át, és ugyanúgy tele tankkal kérjük vissza. Amennyiben az autó üzemanyagszintje a visszaadáskor alacsonyabb, mint átvételkor, a hiányzó üzemanyag aktuális piaci árát és egy kezelési költséget számítunk fel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Van-e életkori korlátozás a bérléshez?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Igen, autóbérléshez minimum 21 éves kor és legalább 2 éves vezetői tapasztalat szükséges. Egyes prémium kategóriás autóknál a minimum életkor 25 év lehet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lehetséges-e hosszabbítani a bérlést?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Igen, a bérlés időtartama meghosszabbítható, amennyiben az autó nem foglalt a következő időszakra. Kérjük, a hosszabbítási szándékát legalább 24 órával a bérlés lejárta előtt jelezze telefonon vagy e-mailben."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mi történik túlfutott kilométerek esetén?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A napi, valamint a 2 vagy több napos bérlési konstrukciónál meghatározott kilométer limit van érvényben. A limit felett extra kilométerdíjat számítunk fel, amelynek mértéke 50 Ft/km. Hosszabb időtartamú bérlés esetén egyedi kilométer-megállapodás is lehetséges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mennyibe kerül a kaució és hogyan kapom vissza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A kaució összege típus függő, személyautók esetében jellemzően 20.000 Ft belföldre, 30.000 Ft külföldi használat esetén. Kisbusz esetén 50.000–100.000 Ft között alakul. A kauciót készpénzben vagy utalással lehet letétbe helyezni. A jármű sérülésmentes visszaszolgáltatása esetén a kaució teljes összegét azonnal visszakapja."
           }
         }
       ]
@@ -262,11 +352,6 @@ export function SchemaMarkup() {
       "name": "Molnár Autóbérlés Kőszeg",
       "description": "Autóbérlés Kőszegen és környékén kedvező áron, rugalmas feltételekkel",
       "inLanguage": "hu-HU",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${siteUrl}/?search={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
     },
     // Kenyérmorzsa navigáció a kezdőlapra
     {

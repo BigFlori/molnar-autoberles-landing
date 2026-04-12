@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <Analytics />
         <GoogleTagManager gtmId={site.thirdParties.googleTagManager.id} />
-        <Script src={`https://www.google.com/recaptcha/api.js?render=${site.recaptcha.siteKey}`} strategy="beforeInteractive" />
+        <Script src={`https://www.google.com/recaptcha/api.js?render=${site.recaptcha.siteKey}`} strategy="afterInteractive" />
         <Navbar />
         {children}
         <StickyMobileCallButton />
